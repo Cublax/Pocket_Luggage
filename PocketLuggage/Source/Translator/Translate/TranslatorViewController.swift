@@ -12,6 +12,10 @@ class TranslatorViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var TextFieldOrigin: UITextField!
+    
+    @IBOutlet weak var TextFieldDestination: UITextField!
+    
     // MARK: - Properties
     
     var viewModel: TranslatorViewModel! // We assert that this is absolutly needed 🙌
@@ -27,13 +31,22 @@ class TranslatorViewController: UIViewController {
     }
     
     private func bind(to viewModel: TranslatorViewModel) {
-        
+        viewModel.traductedText = { [weak self] text in
+            self?.TextFieldDestination.text = text
+        }
     }
-    
+  
     // MARK: - Actions
     
-    @IBAction func selectLang(_ sender: UIButton) {
+    @IBAction func selectLanguage(_ sender: UIButton) {
         let index = sender.tag
         viewModel.didSelectLangForItem(at: index)
     }
+    
+    @IBAction func TranslateButton(_ sender: UIButton) {
+        
+        viewModel.didPressTranslate(for: TextFieldOrigin.text!, from: "en", to: "fr")
+      
+}
+    
 }

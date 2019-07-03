@@ -22,12 +22,14 @@ final class TranslatorViewModel {
     
     // MARK: - Initializer
     
-    init(repository: TranslatorRepositoryType, delegate: TranslatorViewModelDelegate?) {
+    init(repository: TranslatorRepository, delegate: TranslatorViewModelDelegate?) {
         self.repository = repository
         self.delegate = delegate
     }
     
     // MARK: - Outputs
+    
+    var traductedText: ((String) -> Void)?
     
     // MARK: - Inputs
     
@@ -37,5 +39,15 @@ final class TranslatorViewModel {
     
     func didSelectLangForItem(at index: Int) {
         delegate?.didPresentLanguages()
+    }
+    
+    func didPressTranslate(for text: String, from: String, to: String) {
+        repository.translateRequest(for: text, from: from, to: to) { [weak self] (text, error) in
+            if let text = text {
+                self?.traductedText?(text)
+            } else if let error = error {
+                // Du code pour dire au coordinatpr d'afficher une alert : appeler un delegate
+            }
+        }
     }
 }

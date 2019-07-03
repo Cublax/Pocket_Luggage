@@ -6,4 +6,12 @@
 //  Copyright © 2019 Alexandre Quiblier. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class LanguageTableViewCell: UITableViewCell {
+    
+    
+    
+    
+    
+}

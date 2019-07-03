@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7B4246D21EF731A0DEF91C /* Pods_PocketLuggage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */; };
 		AC65626B22B244BF005CE829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC65626A22B244BF005CE829 /* Main.storyboard */; };
 		ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBBD22B23DF500C78423 /* AppDelegate.swift */; };
 		ACAADBC522B23DF600C78423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACAADBC422B23DF600C78423 /* Assets.xcassets */; };
 		ACAADBC822B23DF600C78423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAADBC622B23DF600C78423 /* LaunchScreen.storyboard */; };
-		ACAADBD322B23DF700C78423 /* PocketLuggageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBD222B23DF700C78423 /* PocketLuggageTests.swift */; };
 		ACAADBDE22B23E6E00C78423 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBDD22B23E6E00C78423 /* AppCoordinator.swift */; };
 		ACAADBE222B23EE100C78423 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBE122B23EE100C78423 /* TabCoordinator.swift */; };
 		ACAADBE422B23F0200C78423 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBE322B23F0200C78423 /* Screens.swift */; };
@@ -25,7 +25,8 @@
 		ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF722B2406200C78423 /* LanguagesViewController.swift */; };
 		ACAADBFA22B2407B00C78423 /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */; };
 		ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */; };
-		ACAADC0022B2412600C78423 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFF22B2412600C78423 /* Network.swift */; };
+		ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */; };
+		ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +47,6 @@
 		ACAADBC722B23DF600C78423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACAADBC922B23DF700C78423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACAADBCE22B23DF700C78423 /* PocketLuggageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PocketLuggageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACAADBD222B23DF700C78423 /* PocketLuggageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketLuggageTests.swift; sourceTree = "<group>"; };
 		ACAADBD422B23DF700C78423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACAADBDD22B23E6E00C78423 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		ACAADBE122B23EE100C78423 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
@@ -61,7 +61,11 @@
 		ACAADBF722B2406200C78423 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
 		ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorRepository.swift; sourceTree = "<group>"; };
-		ACAADBFF22B2412600C78423 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGoogleTranslate.swift; sourceTree = "<group>"; };
+		ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewModelTests.swift; sourceTree = "<group>"; };
+		B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.debug.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.debug.xcconfig"; sourceTree = "<group>"; };
+		F943260D96A68EC97277FAC9 /* Pods-PocketLuggage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.release.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.release.xcconfig"; sourceTree = "<group>"; };
+		FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLuggage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7B4246D21EF731A0DEF91C /* Pods_PocketLuggage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,13 +87,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AB62C0B52DB9DD9E334C9EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A447992368FB29C4DFCAE94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */,
+				F943260D96A68EC97277FAC9 /* Pods-PocketLuggage.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		ACAADBB122B23DF500C78423 = {
 			isa = PBXGroup;
 			children = (
-				AC65626A22B244BF005CE829 /* Main.storyboard */,
 				ACAADBBC22B23DF500C78423 /* PocketLuggage */,
 				ACAADBD122B23DF700C78423 /* PocketLuggageTests */,
 				ACAADBBB22B23DF500C78423 /* Products */,
+				8A447992368FB29C4DFCAE94 /* Pods */,
+				2AB62C0B52DB9DD9E334C9EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,7 +136,7 @@
 		ACAADBD122B23DF700C78423 /* PocketLuggageTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACAADBD222B23DF700C78423 /* PocketLuggageTests.swift */,
+				ACE5879022C221C10055CAF2 /* Translator */,
 				ACAADBD422B23DF700C78423 /* Info.plist */,
 			);
 			path = PocketLuggageTests;
@@ -122,6 +145,7 @@
 		ACAADBDF22B23EA900C78423 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				AC65626A22B244BF005CE829 /* Main.storyboard */,
 				ACAADBBD22B23DF500C78423 /* AppDelegate.swift */,
 				ACAADBDD22B23E6E00C78423 /* AppCoordinator.swift */,
 				ACAADBE122B23EE100C78423 /* TabCoordinator.swift */,
@@ -202,9 +226,17 @@
 		ACAADC0122B2412A00C78423 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				ACAADBFF22B2412600C78423 /* Network.swift */,
+				ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		ACE5879022C221C10055CAF2 /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */,
+			);
+			path = Translator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACAADBD722B23DF700C78423 /* Build configuration list for PBXNativeTarget "PocketLuggage" */;
 			buildPhases = (
+				F8A8187B15822A8E082F6A46 /* [CP] Check Pods Manifest.lock */,
 				ACAADBB622B23DF500C78423 /* Sources */,
 				ACAADBB722B23DF500C78423 /* Frameworks */,
 				ACAADBB822B23DF500C78423 /* Resources */,
+				CBEF5369E13089AADC71B2F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +337,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CBEF5369E13089AADC71B2F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8A8187B15822A8E082F6A46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PocketLuggage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ACAADBB622B23DF500C78423 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -313,7 +389,7 @@
 				ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */,
 				ACAADBDE22B23E6E00C78423 /* AppCoordinator.swift in Sources */,
 				ACAADBE222B23EE100C78423 /* TabCoordinator.swift in Sources */,
-				ACAADC0022B2412600C78423 /* Network.swift in Sources */,
+				ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */,
 				ACAADBF322B23FE400C78423 /* TranslatorViewController.swift in Sources */,
 				ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */,
 				ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */,
@@ -330,7 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACAADBD322B23DF700C78423 /* PocketLuggageTests.swift in Sources */,
+				ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,11 +550,12 @@
 		};
 		ACAADBD822B23DF700C78423 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3ZXCXJK7A;
-				INFOPLIST_FILE = PocketLuggage/Info.plist;
+				INFOPLIST_FILE = PocketLuggage/Ressources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,11 +569,12 @@
 		};
 		ACAADBD922B23DF700C78423 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F943260D96A68EC97277FAC9 /* Pods-PocketLuggage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B3ZXCXJK7A;
-				INFOPLIST_FILE = PocketLuggage/Info.plist;
+				INFOPLIST_FILE = PocketLuggage/Ressources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

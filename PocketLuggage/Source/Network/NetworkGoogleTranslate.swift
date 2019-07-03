@@ -12,7 +12,8 @@ protocol NetworkType: class {
     
 }
 
-final class Network: NetworkType {
+final class NetworkGoogleTranslate: NetworkType {
+    
     
 }
 
