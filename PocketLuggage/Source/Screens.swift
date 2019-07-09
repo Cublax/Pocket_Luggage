@@ -17,6 +17,10 @@ final class Screens {
 
 // MARK: - Translator
 
+protocol LanguageViewControllerDelegate: class {
+    func languageScreenDidSelectDetail(with title: String)
+}
+
 extension Screens {
     func createTranslatorViewController(delegate: TranslatorViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "TranslatorViewController") as! TranslatorViewController
@@ -26,8 +30,11 @@ extension Screens {
         return viewController
     }
     
-    func createLanguagesViewController() -> UIViewController {
+    func createLanguagesViewController(delegate: LanguageViewControllerDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LanguagesViewController") as! LanguagesViewController
+        let repository = LanguageRepository()
+        let viewModel = LanguageViewModel(delegate: delegate!, repository: repository)
+        viewController.viewModel = viewModel
         return viewController
     }
 }

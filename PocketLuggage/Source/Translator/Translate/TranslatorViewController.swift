@@ -20,6 +20,8 @@ class TranslatorViewController: UIViewController {
     
     var viewModel: TranslatorViewModel! // We assert that this is absolutly needed 🙌
     
+    var textWrittenCopy = ""
+    
     // MARK: - View life cycle
     
     override func viewDidLoad() {
@@ -44,9 +46,7 @@ class TranslatorViewController: UIViewController {
     }
     
     @IBAction func TranslateButton(_ sender: UIButton) {
-        
         viewModel.didPressTranslate(for: TextFieldOrigin.text!, from: "en", to: "fr")
-      
 }
     
 }

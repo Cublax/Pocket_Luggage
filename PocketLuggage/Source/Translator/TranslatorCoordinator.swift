@@ -35,7 +35,7 @@ final class TranslatorCoordinator {
     }
     
     private func showLanguages() {
-        let viewController = screens.createLanguagesViewController()
+        let viewController = screens.createLanguagesViewController(delegate: self)
         presenter.show(viewController, sender: nil)
     }
 }
@@ -44,4 +44,10 @@ extension TranslatorCoordinator: TranslatorViewModelDelegate {
     func didPresentLanguages() {
         showLanguages()
 }
+}
+
+extension TranslatorCoordinator: LanguageViewControllerDelegate {
+    func languageScreenDidSelectDetail(with title: String) {
+        /// Dismiss presenter showLanguage() + add showTranslate() en ayant récupéré les informations de langues choisit (title ?)
+    }
 }

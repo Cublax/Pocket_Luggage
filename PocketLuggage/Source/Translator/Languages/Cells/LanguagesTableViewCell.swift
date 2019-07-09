@@ -10,8 +10,14 @@ import UIKit
 
 final class LanguageTableViewCell: UITableViewCell {
     
+    // MARK: - Outlets
     
+    @IBOutlet private weak var nameLabel: UILabel!
     
+    // MARK: - Configure
     
-    
+    func configure(with title: String, isSelected: Bool) {
+        self.nameLabel.text = title
+        self.accessoryType = isSelected ? .checkmark : .none
+    }
 }

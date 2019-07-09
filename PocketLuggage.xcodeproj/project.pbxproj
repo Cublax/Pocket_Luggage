@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A7B4246D21EF731A0DEF91C /* Pods_PocketLuggage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */; };
+		AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */; };
+		AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */; };
 		AC65626B22B244BF005CE829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC65626A22B244BF005CE829 /* Main.storyboard */; };
 		ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBBD22B23DF500C78423 /* AppDelegate.swift */; };
 		ACAADBC522B23DF600C78423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACAADBC422B23DF600C78423 /* Assets.xcassets */; };
@@ -27,6 +29,7 @@
 		ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */; };
 		ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */; };
 		ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */; };
+		ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageViewModel.swift; path = ../LanguageViewModel.swift; sourceTree = "<group>"; };
+		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
 		AC65626A22B244BF005CE829 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		ACAADBBA22B23DF500C78423 /* PocketLuggage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLuggage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAADBBD22B23DF500C78423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorRepository.swift; sourceTree = "<group>"; };
 		ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGoogleTranslate.swift; sourceTree = "<group>"; };
 		ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewModelTests.swift; sourceTree = "<group>"; };
+		ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesRepository.swift; sourceTree = "<group>"; };
 		B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.debug.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.debug.xcconfig"; sourceTree = "<group>"; };
 		F943260D96A68EC97277FAC9 /* Pods-PocketLuggage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.release.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.release.xcconfig"; sourceTree = "<group>"; };
 		FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLuggage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,7 +224,10 @@
 			isa = PBXGroup;
 			children = (
 				ACAADBFB22B2408900C78423 /* Cells */,
+				AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */,
 				ACAADBF722B2406200C78423 /* LanguagesViewController.swift */,
+				ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */,
+				AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */,
 			);
 			path = Languages;
 			sourceTree = "<group>";
@@ -386,9 +395,12 @@
 			files = (
 				ACAADBF022B23FAB00C78423 /* TranslatorCoordinator.swift in Sources */,
 				ACAADBE622B23F2400C78423 /* MeteoCoordinator.swift in Sources */,
+				AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */,
+				AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */,
 				ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */,
 				ACAADBDE22B23E6E00C78423 /* AppCoordinator.swift in Sources */,
 				ACAADBE222B23EE100C78423 /* TabCoordinator.swift in Sources */,
+				ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */,
 				ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */,
 				ACAADBF322B23FE400C78423 /* TranslatorViewController.swift in Sources */,
 				ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */,

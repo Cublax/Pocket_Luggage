@@ -138,13 +138,30 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="LanguageItem" id="zsm-KX-7sc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ItemTableViewCell" id="zsm-KX-7sc" customClass="LanguageTableViewCell" customModule="PocketLuggage" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zsm-KX-7sc" id="zFp-5t-0AA">
                                             <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xB-xB-aEG" userLabel="Name Label">
+                                                    <rect key="frame" x="15" y="11" width="313" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4xB-xB-aEG" secondAttribute="bottom" id="PXY-kg-DBN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4xB-xB-aEG" secondAttribute="trailing" id="QMJ-pB-ZRE"/>
+                                                <constraint firstItem="4xB-xB-aEG" firstAttribute="leading" secondItem="zFp-5t-0AA" secondAttribute="leadingMargin" id="TYO-of-Cfi"/>
+                                                <constraint firstItem="4xB-xB-aEG" firstAttribute="top" secondItem="zFp-5t-0AA" secondAttribute="topMargin" id="wfH-hP-lXE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="4xB-xB-aEG" id="qZ9-UE-vVt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -236,6 +253,7 @@
                                                 <state key="normal" title="Button 3"/>
                                                 <connections>
                                                     <action selector="SwitchLanguage:" destination="1hS-Fx-ZXp" eventType="touchUpInside" id="J88-eb-YEx"/>
+                                                    <action selector="switchOriginAndDestination:" destination="1hS-Fx-ZXp" eventType="touchUpInside" id="Mfx-bN-DTq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
