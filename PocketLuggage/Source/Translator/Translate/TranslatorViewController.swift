@@ -20,8 +20,6 @@ class TranslatorViewController: UIViewController {
     
     var viewModel: TranslatorViewModel! // We assert that this is absolutly needed 🙌
     
-    var textWrittenCopy = ""
-    
     // MARK: - View life cycle
     
     override func viewDidLoad() {

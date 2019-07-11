@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol TranslatorViewModelDelegate: class {
-    func didPresentLanguages()
-}
-
 final class TranslatorViewModel {
     
     // MARK: - Properties
@@ -41,12 +37,13 @@ final class TranslatorViewModel {
         delegate?.didPresentLanguages()
     }
     
+    
     func didPressTranslate(for text: String, from: String, to: String) {
         repository.translateRequest(for: text, from: from, to: to) { [weak self] (text, error) in
             if let text = text {
                 self?.traductedText?(text)
-            } else if let error = error {
-                // Du code pour dire au coordinatpr d'afficher une alert : appeler un delegate
+            } else if error != nil {
+                self?.delegate?.ShouldDisplayAlert(for: .translationError)
             }
         }
     }

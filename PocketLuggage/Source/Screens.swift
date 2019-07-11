@@ -17,6 +17,11 @@ final class Screens {
 
 // MARK: - Translator
 
+protocol TranslatorViewModelDelegate: class {
+    func didPresentLanguages()
+     func ShouldDisplayAlert(for type: AlertType)
+}
+
 protocol LanguageViewControllerDelegate: class {
     func languageScreenDidSelectDetail(with title: String)
 }
@@ -54,6 +59,18 @@ extension Screens {
     func createConverterViewController() -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
         return viewController
+    }
+}
+
+// MARK: - Alert
+
+extension Screens {
+    func createAlert(for type: AlertType) -> UIAlertController {
+        let alert = Alert(type: type)
+        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertController.addAction(action)
+        return alertController
     }
 }
 

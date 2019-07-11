@@ -38,9 +38,18 @@ final class TranslatorCoordinator {
         let viewController = screens.createLanguagesViewController(delegate: self)
         presenter.show(viewController, sender: nil)
     }
+    
+    private func showAlert(for type: AlertType) {
+        let alert = screens.createAlert(for: type)
+        presenter.visibleViewController?.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension TranslatorCoordinator: TranslatorViewModelDelegate {
+    func ShouldDisplayAlert(for type: AlertType) {
+        showAlert(for: type)
+    }
+    
     func didPresentLanguages() {
         showLanguages()
 }

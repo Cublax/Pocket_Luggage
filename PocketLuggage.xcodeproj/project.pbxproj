@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A7B4246D21EF731A0DEF91C /* Pods_PocketLuggage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */; };
+		AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E3E5022D73A3B00F4BA30 /* Alert.swift */; };
 		AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */; };
 		AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */; };
 		AC65626B22B244BF005CE829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC65626A22B244BF005CE829 /* Main.storyboard */; };
@@ -27,7 +28,6 @@
 		ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF722B2406200C78423 /* LanguagesViewController.swift */; };
 		ACAADBFA22B2407B00C78423 /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */; };
 		ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */; };
-		ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */; };
 		ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */; };
 		ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC2E3E5022D73A3B00F4BA30 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageViewModel.swift; path = ../LanguageViewModel.swift; sourceTree = "<group>"; };
 		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
 		AC65626A22B244BF005CE829 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		ACAADBF722B2406200C78423 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
 		ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorRepository.swift; sourceTree = "<group>"; };
-		ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGoogleTranslate.swift; sourceTree = "<group>"; };
 		ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewModelTests.swift; sourceTree = "<group>"; };
 		ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesRepository.swift; sourceTree = "<group>"; };
 		B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.debug.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				ACAADBF122B23FBC00C78423 /* Translator */,
 				ACAADBEE22B23F8700C78423 /* Converter */,
 				ACAADBE922B23F4200C78423 /* Meteo */,
-				ACAADC0122B2412A00C78423 /* Network */,
+				ACAADC0122B2412A00C78423 /* Alert */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -232,12 +232,12 @@
 			path = Languages;
 			sourceTree = "<group>";
 		};
-		ACAADC0122B2412A00C78423 /* Network */ = {
+		ACAADC0122B2412A00C78423 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
-				ACAADBFF22B2412600C78423 /* NetworkGoogleTranslate.swift */,
+				AC2E3E5022D73A3B00F4BA30 /* Alert.swift */,
 			);
-			path = Network;
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		ACE5879022C221C10055CAF2 /* Translator */ = {
@@ -398,10 +398,10 @@
 				AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */,
 				AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */,
 				ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */,
+				AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */,
 				ACAADBDE22B23E6E00C78423 /* AppCoordinator.swift in Sources */,
 				ACAADBE222B23EE100C78423 /* TabCoordinator.swift in Sources */,
 				ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */,
-				ACAADC0022B2412600C78423 /* NetworkGoogleTranslate.swift in Sources */,
 				ACAADBF322B23FE400C78423 /* TranslatorViewController.swift in Sources */,
 				ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */,
 				ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */,
