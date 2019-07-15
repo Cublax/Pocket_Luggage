@@ -8,6 +8,15 @@
 
 import Foundation
 
+protocol LanguageViewControllerDelegate: class {
+    func languageScreenDidSelectDetail(with language: LanguageType)
+}
+
+struct LanguageStruct: Equatable {
+    let name: String
+    let atribute: String
+}
+
 final class LanguageViewModel {
     
     // MARK: Private properties
@@ -23,26 +32,32 @@ final class LanguageViewModel {
     
     private let repository: LanguageRepositoryType
     
+    private let languageType: LanguageViewType
+    
     // MARK: - Initializer
     
-    init(delegate: LanguageViewControllerDelegate, repository: LanguageRepositoryType) {
-        self.delegate = delegate
+    init(languageType: LanguageViewType,
+         repository: LanguageRepositoryType,
+         delegate: LanguageViewControllerDelegate?) {
+        self.languageType = languageType
         self.repository = repository
+        self.delegate = delegate
     }
     
     // MARK: - Properties
     
     enum Item: Equatable {
-        case language(text: String, state: Bool)
+        case language(text: String)
     }
     
     fileprivate enum LanguageItem: Equatable {
-        case language(name: String, atribute: String, state: Bool)
+        case language(languageStruct: LanguageStruct)
     }
     
     private class func initialItems(from languages: [Language]) -> [LanguageItem] {
         return languages.map {
-            return .language(name: $0.title, atribute: $0.key, state: false)
+            return .language(languageStruct: LanguageStruct(name: $0.title,
+                                                            atribute: $0.key))
         }
     }
     
@@ -62,15 +77,26 @@ final class LanguageViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        /// On vera plus tard
+        guard index < languageItems.count else {
+            return
+        }
+        let item = languageItems[index]
+        if case .language(languageStruct: let languageStruct) = item {
+            switch languageType {
+            case .origin:
+                delegate?.languageScreenDidSelectDetail(with: .origin(languageStruct.name, languageStruct.atribute))
+            case .destination:
+                delegate?.languageScreenDidSelectDetail(with: .destination(languageStruct.name, languageStruct.atribute))
+            }
+    }
     }
 }
 
 extension LanguageViewModel.Item {
     fileprivate init(languageItem: LanguageViewModel.LanguageItem) {
         switch languageItem {
-        case .language(name: let name, atribute: _, state: let state) :
-            self = .language(text: name, state: state)
+        case .language(languageStruct: let languageStruct) :
+            self = .language(text: languageStruct.name)
         }
     }
 }

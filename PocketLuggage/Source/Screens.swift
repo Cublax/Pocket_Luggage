@@ -17,28 +17,21 @@ final class Screens {
 
 // MARK: - Translator
 
-protocol TranslatorViewModelDelegate: class {
-    func didPresentLanguages()
-     func ShouldDisplayAlert(for type: AlertType)
-}
-
-protocol LanguageViewControllerDelegate: class {
-    func languageScreenDidSelectDetail(with title: String)
-}
-
 extension Screens {
-    func createTranslatorViewController(delegate: TranslatorViewModelDelegate?) -> UIViewController {
+    func createTranslatorViewController(with languageConfiguration: LanguageCOnfiguration, delegate: TranslatorViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "TranslatorViewController") as! TranslatorViewController
         let repository = TranslatorRepository()
-        let viewModel = TranslatorViewModel(repository: repository, delegate: delegate)
+        let viewModel = TranslatorViewModel(repository: repository,
+                                            languageConfiguration: languageConfiguration,
+                                            delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }
     
-    func createLanguagesViewController(delegate: LanguageViewControllerDelegate?) -> UIViewController {
+    func createLanguagesViewController(languageType: LanguageViewType, delegate: LanguageViewControllerDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LanguagesViewController") as! LanguagesViewController
         let repository = LanguageRepository()
-        let viewModel = LanguageViewModel(delegate: delegate!, repository: repository)
+        let viewModel = LanguageViewModel(languageType: languageType, repository: repository, delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }

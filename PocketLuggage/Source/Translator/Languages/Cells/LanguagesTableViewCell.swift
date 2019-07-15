@@ -16,8 +16,7 @@ final class LanguageTableViewCell: UITableViewCell {
     
     // MARK: - Configure
     
-    func configure(with title: String, isSelected: Bool) {
+    func configure(with title: String) {
         self.nameLabel.text = title
-        self.accessoryType = isSelected ? .checkmark : .none
     }
 }

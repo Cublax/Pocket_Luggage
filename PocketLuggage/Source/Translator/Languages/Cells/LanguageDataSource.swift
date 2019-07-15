@@ -13,7 +13,7 @@ class LanguageDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     typealias Item  = LanguageViewModel.Item
     
     private enum VisibleItem {
-        case item(language: String, state: Bool)
+        case item(language: String)
     }
     
     private var items: [VisibleItem] = []
@@ -25,8 +25,8 @@ class LanguageDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     func update(with items: [Item]) {
         self.items = items.map { item -> VisibleItem  in
             switch item {
-            case .language(text: let text, state: let state):
-                return .item(language: text, state: state)
+            case .language(text: let text):
+                return .item(language: text)
             }
         }
     }
@@ -43,9 +43,9 @@ class LanguageDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
         }
         
         switch items[indexPath.item] {
-        case .item(language: let language, state: let state):
+        case .item(language: let language):
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! LanguageTableViewCell
-            cell.configure(with: language, isSelected: state)
+            cell.configure(with: language)
             return cell
         }
     }

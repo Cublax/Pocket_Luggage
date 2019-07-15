@@ -25,17 +25,20 @@ final class TranslatorCoordinator {
     
     // MARK: - Coordinator
     
+    private var defaultConfiguration = LanguageCOnfiguration(originLanguage: ("Francais", "fr"),
+                                                             destinationLanguage: ("English", "en"))
+    
     func start() {
-        showTranslate()
+        showTranslate(with: defaultConfiguration)
     }
     
-    private func showTranslate() {
-        let viewController = screens.createTranslatorViewController(delegate: self)
+    private func showTranslate(with configuration: LanguageCOnfiguration) {
+        let viewController = screens.createTranslatorViewController(with: configuration, delegate: self)
         presenter.viewControllers = [viewController]
     }
     
-    private func showLanguages() {
-        let viewController = screens.createLanguagesViewController(delegate: self)
+    private func showLanguages(with type: LanguageViewType) {
+        let viewController = screens.createLanguagesViewController(languageType: type, delegate: self)
         presenter.show(viewController, sender: nil)
     }
     
@@ -46,17 +49,30 @@ final class TranslatorCoordinator {
 }
 
 extension TranslatorCoordinator: TranslatorViewModelDelegate {
+    func didPresentLanguages(for type: LanguageViewType) {
+        showLanguages(with: type)
+    }
+    
     func ShouldDisplayAlert(for type: AlertType) {
         showAlert(for: type)
     }
-    
-    func didPresentLanguages() {
-        showLanguages()
-}
 }
 
 extension TranslatorCoordinator: LanguageViewControllerDelegate {
-    func languageScreenDidSelectDetail(with title: String) {
+    func languageScreenDidSelectDetail(with language: LanguageType) {
         /// Dismiss presenter showLanguage() + add showTranslate() en ayant récupéré les informations de langues choisit (title ?)
+        presenter.popViewController(animated: true)
+        switch language {
+        case .origin(let value, let key):
+            defaultConfiguration.originLanguage = (value, key)
+        case .destination(let value, let key):
+            defaultConfiguration.destinationLanguage = (value, key)
+        }
+        showTranslate(with: defaultConfiguration)
     }
+}
+
+enum LanguageType {
+    case origin(_ name: String, _ key: String)
+    case destination(_ value: String, _ key: String)
 }
