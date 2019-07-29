@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftGoogleTranslate
 
 struct Language {
     let key: String
@@ -19,14 +20,24 @@ protocol LanguageRepositoryType: class {
 
 final class LanguageRepository: LanguageRepositoryType {
     
-    let languages: [String: String] = [
-        "fr" : "français",
-        "de" : "deutsch",
-    ]
+      // MARK: - Properties
+    
+    private var translator: SwiftGoogleTranslate
+
+     // MARK: - Initializer
+    
+    init() {
+        translator = SwiftGoogleTranslate.shared
+        translator.start(with: "AIzaSyC5G9jKEyehau2iR0MfAe1WD6_a3cqNHEI")
+    }
+    
+    // MARK: - Requests
     
     func requestLanguages(callback: @escaping ([Language]) -> Void) {
-        callback(languages.map { (key, value) -> Language in
-            return Language(key: key, title: value)
-        })
+        translator.languages { (languages, error) in
+            guard let languages = languages else { return }
+            let result = languages.map { Language(key: $0.language, title: $0.name) }
+            callback(result)
+        }
     }
 }

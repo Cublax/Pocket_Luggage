@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A7B4246D21EF731A0DEF91C /* Pods_PocketLuggage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC7433AFB27EDC7A2C9EEE4 /* Pods_PocketLuggage.framework */; };
+		AC180FD122DDC80100BA1105 /* LanguageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC180FD022DDC80100BA1105 /* LanguageViewModelTests.swift */; };
 		AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E3E5022D73A3B00F4BA30 /* Alert.swift */; };
 		AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */; };
 		AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC180FD022DDC80100BA1105 /* LanguageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModelTests.swift; sourceTree = "<group>"; };
 		AC2E3E5022D73A3B00F4BA30 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageViewModel.swift; path = ../LanguageViewModel.swift; sourceTree = "<group>"; };
 		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */,
+				AC180FD022DDC80100BA1105 /* LanguageViewModelTests.swift */,
 			);
 			path = Translator;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC180FD122DDC80100BA1105 /* LanguageViewModelTests.swift in Sources */,
 				ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

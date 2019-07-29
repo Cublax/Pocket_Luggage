@@ -12,9 +12,9 @@ class TranslatorViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var TextFieldOrigin: UITextField!
+    @IBOutlet weak var originTextField: UITextField!
     
-    @IBOutlet weak var TextFieldDestination: UITextField!
+    @IBOutlet weak var destinationTextField: UITextField!
     
     @IBOutlet weak var originLanguageButton: UIButton!
     
@@ -43,10 +43,12 @@ class TranslatorViewController: UIViewController {
             self?.destinationLanguageButton.setTitle(text, for: .normal)
         }
         
-        viewModel.traductedText = { [weak self] text in
-            DispatchQueue.main.async {
-                self?.TextFieldDestination.text = text
-            }
+        viewModel.originText = { [weak self] text in
+            self?.originTextField.text = text
+        }
+        
+        viewModel.destinationText = { [weak self] text in
+            self?.destinationTextField.text = text
         }
     }
   
@@ -61,8 +63,10 @@ class TranslatorViewController: UIViewController {
     }
     
     
-    @IBAction func TranslateButton(_ sender: UIButton) {
-        viewModel.didPressTranslate(for: TextFieldOrigin.text!)
+    @IBAction func translateButton(_ sender: UIButton) {
+        viewModel.didPressTranslate(for: originTextField.text!)
 }
-    
+    @IBAction func switchButton(_ sender: UIButton) {
+       viewModel.didPressSwitch(with: originTextField.text, and: destinationTextField.text)
+    }
 }

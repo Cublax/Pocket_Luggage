@@ -10,12 +10,12 @@ import Foundation
 
 protocol TranslatorViewModelDelegate: class {
     func didPresentLanguages(for type: LanguageViewType)
-    func ShouldDisplayAlert(for type: AlertType)
+    func shouldDisplayAlert(for type: AlertType)
 }
 
-struct LanguageCOnfiguration {
-    var originLanguage: (name: String, attribute: String)
-    var destinationLanguage: (name: String, attribute: String)
+struct LanguageConfiguration {
+    var originLanguage: (name: String, attribute: String, contentText: String)
+    var destinationLanguage: (name: String, attribute: String, contentText: String)
 }
 
 enum LanguageViewType {
@@ -23,24 +23,46 @@ enum LanguageViewType {
     case destination
 }
 
+typealias LanguageStructure = (name: String, attribute: String, contentText: String)
+
 final class TranslatorViewModel {
     
     // MARK: - Properties
     
     private let repository: TranslatorRepositoryType
     
-    private let languageConfiguration: LanguageCOnfiguration
+    private let languageConfiguration: LanguageConfiguration
     
     private weak var delegate: TranslatorViewModelDelegate?
     
+    private var languageStructures: [LanguageStructure] = [] {
+        didSet {
+            let origin = self.languageStructures[0]
+            originTextLanguague?(origin.name)
+            originText?(origin.contentText)
+            let destination = self.languageStructures[1]
+            destinationTextLanguage?(destination.name)
+            destinationText?(destination.contentText)
+        }
+    }
+    
     // MARK: - Initializer
     
-    init(repository: TranslatorRepository,
-         languageConfiguration: LanguageCOnfiguration,
+    init(repository: TranslatorRepositoryType,
+         languageConfiguration: LanguageConfiguration,
          delegate: TranslatorViewModelDelegate?) {
         self.repository = repository
         self.languageConfiguration = languageConfiguration
         self.delegate = delegate
+    }
+    
+    private func initializeLanguageStructure(with configuration: LanguageConfiguration) -> [LanguageStructure] {
+        return [LanguageStructure(configuration.originLanguage.name,
+                                  configuration.originLanguage.attribute,
+                                  configuration.originLanguage.contentText),
+                LanguageStructure(configuration.destinationLanguage.name,
+                                  configuration.destinationLanguage.attribute,
+                                  configuration.destinationLanguage.contentText)]
     }
     
     // MARK: - Outputs
@@ -49,29 +71,42 @@ final class TranslatorViewModel {
     
     var destinationTextLanguage: ((String) -> Void)?
     
-    var traductedText: ((String) -> Void)?
+    var originText: ((String) -> Void)?
+    
+    var destinationText: ((String) -> Void)?
     
     // MARK: - Inputs
     
     func viewDidLoad() {
-        originTextLanguague?(languageConfiguration.originLanguage.name)
-        destinationTextLanguage?(languageConfiguration.destinationLanguage.name)
+        languageStructures = initializeLanguageStructure(with: self.languageConfiguration)
     }
     
     func didSelectLang(for type: LanguageViewType) {
         delegate?.didPresentLanguages(for: type)
     }
     
-    
-    func didPressTranslate(for text: String) {
-        repository.translateRequest(for: text,
+    func didPressTranslate(for originText: String) {
+        repository.translateRequest(for: originText,
                                     from: languageConfiguration.originLanguage.attribute,
                                     to: languageConfiguration.destinationLanguage.attribute) { [weak self] (text, error) in
-            if let text = text {
-                self?.traductedText?(text)
-            } else if error != nil {
-                self?.delegate?.ShouldDisplayAlert(for: .translationError)
-            }
+                                        if let text = text {
+                                            self?.languageStructures[0].contentText = originText
+                                            self?.languageStructures[1].contentText = text
+                                        } else if error != nil {
+                                            self?.delegate?.shouldDisplayAlert(for: .translationError)
+                                        }
         }
+    }
+    
+    func didPressSwitch(with originText: String?, and destinationText: String?) {
+        guard languageStructures.count == 2 else {return}
+        
+        if let originText = originText {
+            languageStructures[0].contentText = originText
+        }
+        if let destinationText = destinationText {
+            languageStructures[1].contentText = destinationText
+        }
+        languageStructures.swapAt(0, 1)
     }
 }

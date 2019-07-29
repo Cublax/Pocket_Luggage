@@ -18,7 +18,7 @@ final class Screens {
 // MARK: - Translator
 
 extension Screens {
-    func createTranslatorViewController(with languageConfiguration: LanguageCOnfiguration, delegate: TranslatorViewModelDelegate?) -> UIViewController {
+    func createTranslatorViewController(with languageConfiguration: LanguageConfiguration, delegate: TranslatorViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "TranslatorViewController") as! TranslatorViewController
         let repository = TranslatorRepository()
         let viewModel = TranslatorViewModel(repository: repository,
