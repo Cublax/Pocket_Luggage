@@ -11,8 +11,16 @@
 		AC180FD122DDC80100BA1105 /* LanguageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC180FD022DDC80100BA1105 /* LanguageViewModelTests.swift */; };
 		AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E3E5022D73A3B00F4BA30 /* Alert.swift */; };
 		AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */; };
+		AC59000F22EF422D00FC750C /* ConverterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC59000E22EF422D00FC750C /* ConverterViewModel.swift */; };
+		AC59001322EF5F4600FC750C /* ConverterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC59001222EF5F4600FC750C /* ConverterRepository.swift */; };
 		AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */; };
 		AC65626B22B244BF005CE829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC65626A22B244BF005CE829 /* Main.storyboard */; };
+		AC6A62C222F2F0E200DDCA9E /* CurrencyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */; };
+		AC6A62C422F2F0ED00DDCA9E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62C322F2F0ED00DDCA9E /* Currency.swift */; };
+		AC6A62CB22F2FA4800DDCA9E /* HTTPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62CA22F2FA4800DDCA9E /* HTTPEngine.swift */; };
+		AC6A62CD22F2FA5800DDCA9E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62CC22F2FA5800DDCA9E /* HTTPClient.swift */; };
+		AC6A62CF22F2FAEE00DDCA9E /* RequestCancelationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62CE22F2FAEE00DDCA9E /* RequestCancelationToken.swift */; };
+		AC838D422302C7380076FFE8 /* MeteoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC838D412302C7380076FFE8 /* MeteoCollectionViewCell.swift */; };
 		ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBBD22B23DF500C78423 /* AppDelegate.swift */; };
 		ACAADBC522B23DF600C78423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACAADBC422B23DF600C78423 /* Assets.xcassets */; };
 		ACAADBC822B23DF600C78423 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACAADBC622B23DF600C78423 /* LaunchScreen.storyboard */; };
@@ -29,6 +37,7 @@
 		ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF722B2406200C78423 /* LanguagesViewController.swift */; };
 		ACAADBFA22B2407B00C78423 /* LanguagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */; };
 		ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */; };
+		ACC2BC7922F03E1400AD33B6 /* ConverterDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC2BC7822F03E1400AD33B6 /* ConverterDataSource.swift */; };
 		ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */; };
 		ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */; };
 /* End PBXBuildFile section */
@@ -47,8 +56,16 @@
 		AC180FD022DDC80100BA1105 /* LanguageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageViewModelTests.swift; sourceTree = "<group>"; };
 		AC2E3E5022D73A3B00F4BA30 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageViewModel.swift; path = ../LanguageViewModel.swift; sourceTree = "<group>"; };
+		AC59000E22EF422D00FC750C /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
+		AC59001222EF5F4600FC750C /* ConverterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRepository.swift; sourceTree = "<group>"; };
 		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
 		AC65626A22B244BF005CE829 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyItem.swift; sourceTree = "<group>"; };
+		AC6A62C322F2F0ED00DDCA9E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		AC6A62CA22F2FA4800DDCA9E /* HTTPEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEngine.swift; sourceTree = "<group>"; };
+		AC6A62CC22F2FA5800DDCA9E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		AC6A62CE22F2FAEE00DDCA9E /* RequestCancelationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCancelationToken.swift; sourceTree = "<group>"; };
+		AC838D412302C7380076FFE8 /* MeteoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeteoCollectionViewCell.swift; path = PocketLuggage/Source/Meteo/MeteoCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		ACAADBBA22B23DF500C78423 /* PocketLuggage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketLuggage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAADBBD22B23DF500C78423 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACAADBC422B23DF600C78423 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +86,7 @@
 		ACAADBF722B2406200C78423 /* LanguagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesViewController.swift; sourceTree = "<group>"; };
 		ACAADBF922B2407B00C78423 /* LanguagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesTableViewCell.swift; sourceTree = "<group>"; };
 		ACAADBFD22B240EA00C78423 /* TranslatorRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorRepository.swift; sourceTree = "<group>"; };
+		ACC2BC7822F03E1400AD33B6 /* ConverterDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ConverterDataSource.swift; path = ../Translator/Languages/ConverterDataSource.swift; sourceTree = "<group>"; };
 		ACE5878E22C21FA30055CAF2 /* TranslatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewModelTests.swift; sourceTree = "<group>"; };
 		ACF390F422D34C0A00143A21 /* LanguagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesRepository.swift; sourceTree = "<group>"; };
 		B6FB16AB562134500EDB72AB /* Pods-PocketLuggage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PocketLuggage.debug.xcconfig"; path = "Target Support Files/Pods-PocketLuggage/Pods-PocketLuggage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +128,33 @@
 				F943260D96A68EC97277FAC9 /* Pods-PocketLuggage.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC6A62C022F2F0D100DDCA9E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */,
+				AC6A62C322F2F0ED00DDCA9E /* Currency.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		AC6A62C522F2F91300DDCA9E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AC6A62CA22F2FA4800DDCA9E /* HTTPEngine.swift */,
+				AC6A62CE22F2FAEE00DDCA9E /* RequestCancelationToken.swift */,
+				AC6A62CC22F2FA5800DDCA9E /* HTTPClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AC838D442302C75F0076FFE8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				AC838D412302C7380076FFE8 /* MeteoCollectionViewCell.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		ACAADBB122B23DF500C78423 = {
@@ -162,6 +207,7 @@
 				ACAADBEE22B23F8700C78423 /* Converter */,
 				ACAADBE922B23F4200C78423 /* Meteo */,
 				ACAADC0122B2412A00C78423 /* Alert */,
+				AC6A62C522F2F91300DDCA9E /* Network */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -179,6 +225,7 @@
 		ACAADBE922B23F4200C78423 /* Meteo */ = {
 			isa = PBXGroup;
 			children = (
+				AC838D442302C75F0076FFE8 /* New Group */,
 				ACAADBE722B23F3800C78423 /* MeteoViewController.swift */,
 				ACAADBE522B23F2400C78423 /* MeteoCoordinator.swift */,
 			);
@@ -188,7 +235,11 @@
 		ACAADBEE22B23F8700C78423 /* Converter */ = {
 			isa = PBXGroup;
 			children = (
+				AC6A62C022F2F0D100DDCA9E /* New Group */,
 				ACAADBEC22B23F7F00C78423 /* ConverterviewController.swift */,
+				AC59000E22EF422D00FC750C /* ConverterViewModel.swift */,
+				AC59001222EF5F4600FC750C /* ConverterRepository.swift */,
+				ACC2BC7822F03E1400AD33B6 /* ConverterDataSource.swift */,
 				ACAADBEA22B23F6400C78423 /* ConverterCoordinator.swift */,
 			);
 			path = Converter;
@@ -397,23 +448,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACAADBF022B23FAB00C78423 /* TranslatorCoordinator.swift in Sources */,
+				AC6A62CF22F2FAEE00DDCA9E /* RequestCancelationToken.swift in Sources */,
+				AC6A62CD22F2FA5800DDCA9E /* HTTPClient.swift in Sources */,
 				ACAADBE622B23F2400C78423 /* MeteoCoordinator.swift in Sources */,
 				AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */,
 				AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */,
 				ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */,
+				AC6A62C222F2F0E200DDCA9E /* CurrencyItem.swift in Sources */,
 				AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */,
+				AC59000F22EF422D00FC750C /* ConverterViewModel.swift in Sources */,
 				ACAADBDE22B23E6E00C78423 /* AppCoordinator.swift in Sources */,
+				AC6A62CB22F2FA4800DDCA9E /* HTTPEngine.swift in Sources */,
 				ACAADBE222B23EE100C78423 /* TabCoordinator.swift in Sources */,
 				ACF390F522D34C0A00143A21 /* LanguagesRepository.swift in Sources */,
 				ACAADBF322B23FE400C78423 /* TranslatorViewController.swift in Sources */,
 				ACAADBBE22B23DF500C78423 /* AppDelegate.swift in Sources */,
 				ACAADBFE22B240EA00C78423 /* TranslatorRepository.swift in Sources */,
+				AC6A62C422F2F0ED00DDCA9E /* Currency.swift in Sources */,
 				ACAADBE422B23F0200C78423 /* Screens.swift in Sources */,
+				ACC2BC7922F03E1400AD33B6 /* ConverterDataSource.swift in Sources */,
 				ACAADBE822B23F3800C78423 /* MeteoViewController.swift in Sources */,
 				ACAADBF522B2400800C78423 /* TranslatorViewModel.swift in Sources */,
 				ACAADBFA22B2407B00C78423 /* LanguagesTableViewCell.swift in Sources */,
+				AC838D422302C7380076FFE8 /* MeteoCollectionViewCell.swift in Sources */,
 				ACAADBEB22B23F6400C78423 /* ConverterCoordinator.swift in Sources */,
 				ACAADBED22B23F7F00C78423 /* ConverterviewController.swift in Sources */,
+				AC59001322EF5F4600FC750C /* ConverterRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

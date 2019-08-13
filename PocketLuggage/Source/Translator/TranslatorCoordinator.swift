@@ -16,8 +16,6 @@ final class TranslatorCoordinator {
     
     private let screens: Screens
     
-    private var copy = ""
-    
     // MARK: - Initializer
     
     init(presenter: UINavigationController, screens: Screens) {
@@ -60,7 +58,7 @@ extension TranslatorCoordinator: TranslatorViewModelDelegate {
     }
 }
 
-extension TranslatorCoordinator: LanguageViewControllerDelegate {
+extension TranslatorCoordinator: LanguageViewModelDelegate {
     func languageScreenDidSelectDetail(with language: LanguageType) {
         presenter.popViewController(animated: true)
         switch language {

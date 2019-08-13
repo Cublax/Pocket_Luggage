@@ -105,7 +105,7 @@ fileprivate final class MockLanguageRepository: LanguageRepositoryType {
     }
 }
 
-fileprivate final class MockLanguageViewControllerDelegate: LanguageViewControllerDelegate {
+fileprivate final class MockLanguageViewControllerDelegate: LanguageViewModelDelegate {
     
     var language: LanguageType? = nil
     

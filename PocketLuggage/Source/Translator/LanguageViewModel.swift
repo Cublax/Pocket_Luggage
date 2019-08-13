@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LanguageViewControllerDelegate: class {
+protocol LanguageViewModelDelegate: class {
     func languageScreenDidSelectDetail(with language: LanguageType)
 }
 
@@ -21,7 +21,7 @@ final class LanguageViewModel {
     
     // MARK: Private properties
     
-    private weak var delegate: LanguageViewControllerDelegate?
+    private weak var delegate: LanguageViewModelDelegate?
 
     private var languageItems: [LanguageItem] = [] {
         didSet {
@@ -38,7 +38,7 @@ final class LanguageViewModel {
     
     init(languageType: LanguageViewType,
          repository: LanguageRepositoryType,
-         delegate: LanguageViewControllerDelegate?) {
+         delegate: LanguageViewModelDelegate?) {
         self.languageType = languageType
         self.repository = repository
         self.delegate = delegate

@@ -28,7 +28,7 @@ extension Screens {
         return viewController
     }
     
-    func createLanguagesViewController(languageType: LanguageViewType, delegate: LanguageViewControllerDelegate?) -> UIViewController {
+    func createLanguagesViewController(languageType: LanguageViewType, delegate: LanguageViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LanguagesViewController") as! LanguagesViewController
         let repository = LanguageRepository()
         let viewModel = LanguageViewModel(languageType: languageType, repository: repository, delegate: delegate)
@@ -41,16 +41,20 @@ extension Screens {
 
 extension Screens {
     func createMeteoViewController() -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! MeteoViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! MeteoViewController
         return viewController
     }
 }
 
 // MARK: - Converter
 
+
 extension Screens {
-    func createConverterViewController() -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
+    func createConverterViewController(with currencyConfiguration: CurrencyConfiguration, delegate: ConverterViewModelDelegate?) -> UIViewController {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! ConverterViewController
+        let repository = ConverterRepository()
+        let viewModel = ConverterViewModel(repository: repository, currencyConfiguration: currencyConfiguration, delegate: delegate)
+        viewController.viewModel = viewModel
         return viewController
     }
 }
