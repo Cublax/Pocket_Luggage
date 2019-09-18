@@ -25,14 +25,12 @@ final class ConverterCoordinator {
     
     // MARK: - Coordinator
     
-    private var defaultConfiguration = CurrencyConfiguration(originCurrency: (currencyKey: "EUR", rate: 1, amount: "1"), destinationCurrency: (currencyKey: "USD", rate: 1.12, amount: "1"))
-    
     func start() {
-        showConverter(with: defaultConfiguration)
+        showConverter()
     }
     
-    private func showConverter(with configuration: CurrencyConfiguration) {
-        let viewController = screens.createConverterViewController(with: configuration, delegate: self)
+    private func showConverter() {
+        let viewController = screens.createConverterViewController( delegate: self)
         presenter.viewControllers = [viewController]
     }
     

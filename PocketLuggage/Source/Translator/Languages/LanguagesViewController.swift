@@ -38,7 +38,7 @@ final class LanguagesViewController: UIViewController {
        dataSource.didSelectItemAtIndex = viewModel.didSelectItem
     }
     
-    private func bind(to: LanguageViewModel) {
+    private func bind(to VM: LanguageViewModel) {
         
         viewModel.titleText = { [weak self] text in
             self?.navigationItem.title = text

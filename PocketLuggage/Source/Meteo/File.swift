@@ -1,5 +1,5 @@
 //
-//  MeteoCollectionViewCell.swift
+//  File.swift
 //  PocketLuggage
 //
 //  Created by Alexandre Quiblier on 13/08/2019.

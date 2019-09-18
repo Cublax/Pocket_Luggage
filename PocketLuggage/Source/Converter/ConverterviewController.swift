@@ -11,6 +11,7 @@ import UIKit
 final class ConverterViewController: UIViewController {
     
     // MARK: - Outlets
+    
     @IBOutlet weak var originUnityCurrencyLabel: UILabel!
     
     @IBOutlet weak var originCurrencyTextField: UITextField!
@@ -41,26 +42,47 @@ final class ConverterViewController: UIViewController {
         bind(to: viewModel)
         
         viewModel.viewDidLoad()
-        
     }
     
     private func bind(to viewModel: ConverterViewModel) {
+        
         viewModel.originCurrencyTitleText = { [weak self] text in
-            self?.originUnityCurrencyLabel.text = text
+            DispatchQueue.main.async {
+                self?.originUnityCurrencyLabel.text = text
+            }
         }
 
+        viewModel.originText = { [weak self] number in
+            DispatchQueue.main.async {
+                self?.originCurrencyTextField.text = number
+            }
+        }
+        
         viewModel.originPlaceHolderText = { [weak self] number in
-         self?.originCurrencyTextField.text = number
+            DispatchQueue.main.async {
+                self?.originCurrencyTextField.placeholder = number
+            }
         }
 
         viewModel.destinationCurrencyTitleText = { [weak self] text in
-            self?.destinationUnityCurrencyLabel.text = text
-        }
-       viewModel.destinationPlaceHolderText = { [weak self] number in
-            self?.destinationCurrencyTextField.text = number
+            DispatchQueue.main.async {
+                self?.destinationUnityCurrencyLabel.text = text
+            }
         }
         
-        viewModel.currencyItems = { [weak self] items in
+        viewModel.destinationText = { [weak self] text in
+            DispatchQueue.main.async {
+                self?.destinationCurrencyTextField.text = text
+            }
+        }
+        
+        viewModel.destinationPlaceHolderText = { [weak self] number in
+            DispatchQueue.main.async {
+                self?.destinationCurrencyTextField.placeholder = number
+            }
+        }
+        
+        viewModel.currencyTitles = { [weak self] items in
             DispatchQueue.main.async {
                 self?.dataSource.update(with: items)
                 self?.destinationCurrencyPickerView.reloadAllComponents()
@@ -69,20 +91,13 @@ final class ConverterViewController: UIViewController {
     }
     
     private func bind(to datasource: ConverterDataSource) {
-       dataSource.didSelectCurrencyWithKey = viewModel.didSelectCurrency
+       dataSource.didSelectCurrencyAtIndex = viewModel.didSelectCurrency
     }
     
     // MARK: - Actions
     
-    @IBAction func getConvertionButton(_ sender: UIButton) {
-        // EditingTextFieldDidEnd
-//        guard let x = originCurrencyTextField.text else {return}
-//        viewModel.getConvertion(for: x)
+    @IBAction func convert(_ sender: UIButton) {
+        guard let value = originCurrencyTextField.text else {return}
+        viewModel.didPressConvert(value: value)
     }
-    @IBAction func didEndEditingTextField(_ sender: UITextField) {
-        guard let x = originCurrencyTextField.text else {return}
-        viewModel.getConvertion(for: x)
-        
-    }
-    
 }

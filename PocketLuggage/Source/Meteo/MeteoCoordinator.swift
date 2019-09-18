@@ -30,7 +30,11 @@ final class MeteoCoordinator {
     }
     
     private func showMeteo() {
-        let viewController = screens.createMeteoViewController()
+        let viewController = screens.createMeteoViewController(delegate: self)
         presenter.viewControllers = [viewController]
     }
+}
+
+extension MeteoCoordinator: MeteoViewModelDelegate {
+    
 }

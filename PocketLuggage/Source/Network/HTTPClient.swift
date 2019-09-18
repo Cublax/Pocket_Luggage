@@ -40,7 +40,7 @@ class HTTPClient {
 }
     
     private func decodeJSON<T>(type: T.Type, data: Data, completion: @escaping (T) -> Void) where T: Decodable {
-        guard let decodedData = try? jsonDecoder.decode(type.self, from: data) else { print("return JSON Decode"); return }
+        guard let decodedData = try? jsonDecoder.decode(type.self, from: data) else { print("Decoder was unable to decode: \(type.self)"); return }
         completion(decodedData)
     }
 }

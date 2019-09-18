@@ -9,9 +9,27 @@
 import XCTest
 @testable import PocketLuggage
 
+fileprivate final class MockLanguageRepository: LanguageRepositoryType {
+    
+    var result: [Language] = []
+    
+    func requestLanguages(callback: @escaping ([Language]) -> Void) {
+        callback(result)
+    }
+}
+
+fileprivate final class MockLanguageViewControllerDelegate: LanguageViewModelDelegate {
+    
+    var language: LanguageType? = nil
+    
+    func languageScreenDidSelectDetail(with language: LanguageType) {
+        self.language = language
+    }
+}
+
 final class LanguageViewModelTests: XCTestCase {
     
-    func testGivenBlablaaWhenThenBlabla() {
+    func testGivenAViewModelWhenViewDidLoadThenTitleTextIsCorrectlyReturned() {
         let mockRepository = MockLanguageRepository()
         let delegate = MockLanguageViewControllerDelegate()
         let viewModel = LanguageViewModel(languageType: .origin,
@@ -93,23 +111,5 @@ final class LanguageViewModelTests: XCTestCase {
         viewModel.didSelectItem(at: 100000)
         
         XCTAssertNil(delegate.language)
-    }
-}
-
-fileprivate final class MockLanguageRepository: LanguageRepositoryType {
-    
-    var result: [Language] = []
-    
-    func requestLanguages(callback: @escaping ([Language]) -> Void) {
-        callback(result)
-    }
-}
-
-fileprivate final class MockLanguageViewControllerDelegate: LanguageViewModelDelegate {
-    
-    var language: LanguageType? = nil
-    
-    func languageScreenDidSelectDetail(with language: LanguageType) {
-        self.language = language
     }
 }

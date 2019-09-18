@@ -39,13 +39,11 @@ final class ConverterDataSource: NSObject, UIPickerViewDataSource, UIPickerViewD
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         guard row < visibleItems.count else { return }
-        let chosenCurrency = self.visibleItems[row]
-        didSelectCurrencyWithKey?(chosenCurrency)
-        
+        didSelectCurrencyAtIndex?(row)
     }
     
     // MARK: - Public
     
-    var didSelectCurrencyWithKey: ((String) -> Void)?
+    var didSelectCurrencyAtIndex: ((Int) -> Void)?
 }
 

@@ -87,8 +87,8 @@ final class TranslatorViewModel {
     
     func didPressTranslate(for originText: String) {
         repository.translateRequest(for: originText,
-                                    from: languageConfiguration.originLanguage.attribute,
-                                    to: languageConfiguration.destinationLanguage.attribute) { [weak self] (text, error) in
+                                    from: languageStructures[0].attribute,
+                                    to: languageStructures[1].attribute) { [weak self] (text, error) in
                                         if let text = text {
                                             self?.languageStructures[0].contentText = originText
                                             self?.languageStructures[1].contentText = text

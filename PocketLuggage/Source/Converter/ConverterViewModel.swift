@@ -12,110 +12,111 @@ protocol ConverterViewModelDelegate: class {
     func shouldDisplayAlert(for type: AlertType)
 }
 
-struct CurrencyConfiguration {
-    var originCurrency: (currencyKey: String, rate: Double, amount: String)
-    var destinationCurrency: (currencyKey: String, rate: Double, amount: String)
-
+class CurrencyStructure {
+    let title: String
+    let shortTitle: String
+    var value: Double
+    
+    init(title: String, shortTitle: String, value: Double) {
+        self.title = title
+        self.shortTitle = shortTitle
+        self.value = value
+    }
 }
-
-typealias CurrencyStructure = (currencyKey: String, rate: Double, amount: String)
 
 final class ConverterViewModel {
     
     // MARK: - Properties
     
-    private let repository: ConverterRepository
-    
-    private let currencyConfiguration: CurrencyConfiguration
+    private let repository: ConverterRepositoryType
     
     private weak var delegate: ConverterViewModelDelegate?
-   
-    private var rates: [String: Double] = [:]
     
-    private var symbols: [String: String] = [:] {
+    private var currencies: [CurrencyStructure] = [] {
         didSet {
-            let value = self.symbols.map { $0.value }
-            self.currencyItems?(value)
+            currencyTitles?(currencies.map {$0.title})
         }
     }
-    
-    private var currencyStructures: [CurrencyStructure] = [] {
-        didSet {
-            let origin = self.currencyStructures[0]
-            originCurrencyTitleText?("\(origin.rate) \(origin.currencyKey)")
-            originPlaceHolderText?(origin.amount)
-            let destination = self.currencyStructures[1]
-            destinationCurrencyTitleText?("\(destination.rate) \(destination.currencyKey)")
-            destinationPlaceHolderText?(destination.amount)
-        }
-    }
+
+    private var localSelectedCurrency: CurrencyStructure?
+
+    private var localValueToConvert: Double?
     
     // MARK: - Initializer
     
-    init(repository: ConverterRepository, currencyConfiguration: CurrencyConfiguration, delegate: ConverterViewModelDelegate?) {
+    init(repository: ConverterRepositoryType, delegate: ConverterViewModelDelegate?) {
         self.repository = repository
-        self.currencyConfiguration = currencyConfiguration
         self.delegate = delegate
     }
     
-    private func initializeCurrencyStructure(with configuration: CurrencyConfiguration) -> [CurrencyStructure] {
-        return [CurrencyStructure(configuration.originCurrency.currencyKey, configuration.originCurrency.rate, configuration.originCurrency.amount),
-            CurrencyStructure(configuration.destinationCurrency.currencyKey, configuration.destinationCurrency.rate, configuration.destinationCurrency.amount)]
-    }
     // MARK: - Outputs
     
     var originCurrencyTitleText: ((String) -> Void)?
-
+    
+    var originText: ((String) -> Void)?
+    
     var originPlaceHolderText: ((String) -> Void)?
     
     var destinationCurrencyTitleText: ((String) -> Void)?
     
     var destinationPlaceHolderText: ((String) -> Void)?
     
+    var destinationText: ((String) -> Void)?
+    
     var convertButtonTitleText: ((String) -> Void)?
     
-    var currencyItems: (([String]) -> Void)?
+    var currencyTitles: (([String]) -> Void)?
     
     // MARK: - Inputs
     
     func viewDidLoad() {
+        originCurrencyTitleText?("1 EUR")
+        originText?("")
+        originPlaceHolderText?("0")
+        
+        destinationCurrencyTitleText?("")
+        destinationText?("")
+        destinationPlaceHolderText?("0")
+        
         repository.getCurenciesList { (symbolsItem) in
-            self.symbols = symbolsItem.symbols
+            self.repository.getCurrenciesRate { (rateItem) in
+                self.currencies = self.initialize(with: symbolsItem.symbols, and: rateItem.rates)
+                self.localSelectedCurrency = self.currencies.first
+                self.destinationCurrencyTitleText?("\(self.currencies.first?.value ?? 0.0) \(self.currencies.first?.shortTitle ?? "N/A")")
+            }
         }
-        repository.getCurrenciesRate { (currencyItem) in
-            self.rates = currencyItem.rates
-        }
-        currencyStructures = initializeCurrencyStructure(with: self.currencyConfiguration)
     }
     
-    func didSelectCurrency(for value: String) {
-        var returnedKey: String = ""
-        let values = self.symbols.map { $0.value }
-        guard let index: Int = values.firstIndex(of: value) else { return }
-        if index <= symbols.count {
-            returnedKey = Array(symbols.keys)[index]
+    func initialize(with symbols: [String: String], and rates: [String: Double]) -> [CurrencyStructure] {
+        let currencies: [CurrencyStructure] = symbols.map { return CurrencyStructure(title: $0.value, shortTitle: $0.key, value: 0.0) }
+        rates.forEach { key, value in
+            currencies.forEach {
+                if $0.shortTitle == key {
+                    $0.value = value
+                }
+            }
         }
-        getRateForKey(for: returnedKey)
-        self.currencyStructures[1].currencyKey = returnedKey
+        return currencies
     }
     
-    
-    private func getRateForKey(for key: String) {
-        var rate: Double = 0
-        let keys = self.rates.map { $0.key }
-        guard let index: Int = keys.firstIndex(of: key) else {return}
-        if index <= rates.count {
-            rate = Array(rates.values)[index]
-        }
-        self.currencyStructures[1].rate = rate
+    func didSelectCurrency(at index: Int) {
+        guard index < currencies.count else { return }
+        let selectedCurrency = currencies[index]
+        localSelectedCurrency = selectedCurrency
+        destinationCurrencyTitleText?("\(selectedCurrency.value) \(selectedCurrency.shortTitle)")
+        guard let value = localValueToConvert else { return }
+        convert(value: value)
     }
     
-    func getConvertion(for texFieldAmount: String) {
-        self.currencyStructures[0].amount = texFieldAmount
-        guard let x = Double(currencyStructures[0].amount) else {return}
-        currencyStructures[1].amount = String(x * currencyStructures[1].rate)
+    func didPressConvert(value: String) {
+        guard let doubleValue = Double(value) else {return}
+        localValueToConvert = doubleValue
+        convert(value: doubleValue)
     }
-    
+
+    private func convert(value: Double) {
+        guard let selectedCurrencyValue = localSelectedCurrency?.value else { return }
+        let result = value * selectedCurrencyValue
+        destinationText?(String(format: "%.2f", result))
+    }
 }
-
-

@@ -40,8 +40,11 @@ extension Screens {
 // MARK: - Meteo
 
 extension Screens {
-    func createMeteoViewController() -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! MeteoViewController
+    func createMeteoViewController(delegate: MeteoViewModelDelegate?) -> UIViewController {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! MeteoViewController
+        let repository = MeteoRepository()
+        let viewModel = MeteoViewModel(repository: repository, delegate: delegate)
+        viewController.viewModel = viewModel
         return viewController
     }
 }
@@ -50,10 +53,10 @@ extension Screens {
 
 
 extension Screens {
-    func createConverterViewController(with currencyConfiguration: CurrencyConfiguration, delegate: ConverterViewModelDelegate?) -> UIViewController {
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! ConverterViewController
+    func createConverterViewController(delegate: ConverterViewModelDelegate?) -> UIViewController {
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
         let repository = ConverterRepository()
-        let viewModel = ConverterViewModel(repository: repository, currencyConfiguration: currencyConfiguration, delegate: delegate)
+        let viewModel = ConverterViewModel(repository: repository, delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }

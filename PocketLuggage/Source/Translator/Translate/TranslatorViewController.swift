@@ -36,19 +36,27 @@ class TranslatorViewController: UIViewController {
     
     private func bind(to viewModel: TranslatorViewModel) {
         viewModel.originTextLanguague = { [weak self] text in
-            self?.originLanguageButton.setTitle(text, for: .normal)
+            DispatchQueue.main.async {
+                self?.originLanguageButton.setTitle(text, for: .normal)
+            }
         }
         
         viewModel.destinationTextLanguage = { [weak self] text in
-            self?.destinationLanguageButton.setTitle(text, for: .normal)
+            DispatchQueue.main.async {
+                self?.destinationLanguageButton.setTitle(text, for: .normal)
+            }
         }
         
         viewModel.originText = { [weak self] text in
-            self?.originTextField.text = text
+            DispatchQueue.main.async {
+                self?.originTextField.text = text
+            }
         }
         
         viewModel.destinationText = { [weak self] text in
-            self?.destinationTextField.text = text
+            DispatchQueue.main.async {
+                self?.destinationTextField.text = text
+            }
         }
     }
   

@@ -9,8 +9,10 @@
 import Foundation
 
 protocol ConverterRepositoryType: class {
-    
+    func getCurrenciesRate(completion: @escaping (CurrencyItem) -> Void)
+    func getCurenciesList(completion: @escaping (SymbolsItem) -> Void)
 }
+
 final class ConverterRepository: ConverterRepositoryType {
     
     // MARK: - Properties
@@ -31,7 +33,6 @@ final class ConverterRepository: ConverterRepositoryType {
         client.request(type: Currency.self, requestType: .GET, url: url) { (response) in
             let item: CurrencyItem = CurrencyItem(updatedDate: response.date,
                                                   rates: response.rates)
-           
             completion(item)
         }
     }
