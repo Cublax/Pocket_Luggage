@@ -12,7 +12,8 @@ final class MeteoViewController: UIViewController {
     
     // MARK: - Outlets
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var weatherTableView: UITableView!
+
 
     // MARK: Private var
     
@@ -25,19 +26,17 @@ final class MeteoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.dataSource = datasource
-        tableView.delegate = datasource
+        weatherTableView.dataSource = datasource
+        weatherTableView.delegate = datasource
         
         bind(to: viewModel)
         viewModel.viewDidLoad()
     }
     
     private func bind(to viewModel: MeteoViewModel) {
-        viewModel.weatherItems = { [weak self] items in
-            DispatchQueue.main.async {
-                self?.datasource.update(with: items)
-                self?.tableView.reloadData()
-            }
+        viewModel.items = { [weak self] items in
+            self?.datasource.update(with: items)
+            self?.weatherTableView.reloadData()
         }
     }
 }

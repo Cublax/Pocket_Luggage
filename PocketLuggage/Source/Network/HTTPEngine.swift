@@ -25,6 +25,7 @@ class HTTPEngine: HTTPEngineType {
     init(configuration: URLSessionConfiguration = .default) {
         self.session = URLSession(configuration: configuration)
     }
+
     func send(request: URLRequest, cancelledBy token: RequestCancellationToken, completion: @escaping HTTPCompletionHander) {
         let task = session.dataTask(with: request) { (data, urlResponse, error) in
             if urlResponse != nil, let httpUrlResponse = urlResponse as? HTTPURLResponse {

@@ -16,90 +16,98 @@ final class MeteoViewModel {
     
     // MARK: - Properties
     
-    private let repository: MeteoRepository
+    private let repository: MeteoRepositoryType
     
     private weak var delegate: MeteoViewModelDelegate?
-
-    var _items: [WeatherItem] = [] {
+    
+    var weatherItems: [WeatherItem] = [] {
         didSet {
-            let items = _items.map { Item(item: $0) }
-            weatherItems?(items)
+            let items = weatherItems.map { Item(weatherItem: $0) }
+            self.items?(items)
         }
     }
     
     // MARK: - Initializer
     
-    init(repository: MeteoRepository, delegate: MeteoViewModelDelegate?) {
+    init(repository: MeteoRepositoryType, delegate: MeteoViewModelDelegate?) {
         self.repository = repository
         self.delegate = delegate
     }
     
     // MARK: - Outputs
     
-    var weatherItems: (([Item]) -> Void)?
+    var items: (([Item]) -> Void)?
 
     enum Item {
         case weather(weather: VisibleWeather)
+        case forecast(forecast: VisibleForecast)
+    }
+
+    enum WeatherItem {
+        case weather(city: City, currentForecast: Forecast)
+        case forecast(forecast: Forecast)
     }
 
     
     // MARK: - Inputs
     
     func viewDidLoad() {
-        repository.getMeteo { [weak self] weatherItem in
-            self?._items = [weatherItem]
-        }
+        repository.getForecastMeteo(completion: {[weak self] weather1 in
+            self?.repository.getForecastMeteo(completion: {[weak self] weather2 in
+                DispatchQueue.main.async {
+                    self?.weatherItems = MeteoViewModel.initialize(with: weather1, weather2: weather2)
+                }
+            })
+        })
     }
-    
-    func initialize(from: WeatherItem) {
-        
-    }
-    
-}
 
-//extension VisibleWeather {
-//    init(item: WeatherItem) {
-//        self.city =
-//        self.currentTemperature = ""
-//        self.currentWeather = ""
-//        self.currentWeatherImage = ""
-//        self.firstForecastImage = ""
-//        self.firstForecastTime = ""
-//        self.firstForecastTemperature = ""
-//        self.secondForecastTemperature = ""
-//        self.secondForecastTime = ""
-//        self.secondForecastImageView = ""
-//        self.thirdForecastTemperature = ""
-//        self.thirdForecastImage = ""
-//        self.thirdForecastTime = ""
-//        self.fourthForecastTemperature = ""
-//        self.fourthForecastImage = ""
-//        self.fourthForecastTime = ""
-//    }
-//}
+    private static func initialize(with weather1: Weather, weather2: Weather) -> [WeatherItem] {
+        var weatherItems: [WeatherItem] = []
+        guard let current1 = weather1.forecasts.first else { return [] }
+        
+        weatherItems.append(.weather(city: weather1.city, currentForecast: current1))
+
+        let forecasts: [WeatherItem] = weather1.forecasts
+          // .filter { $0.dtTxt == "12.0" }
+            .map { .forecast(forecast: $0) }
+        weatherItems.append(contentsOf: forecasts)
+        
+        guard let current2 = weather2.forecasts.first else { return [] }
+        
+        weatherItems.append(.weather(city: weather2.city, currentForecast: current2))
+        
+        let forecasts2: [WeatherItem] = weather2.forecasts
+            // .filter { $0.dtTxt == "12.0" }
+            .map { .forecast(forecast: $0) }
+        weatherItems.append(contentsOf: forecasts2)
+        
+        return weatherItems
+    }
+}
 
 extension MeteoViewModel.Item {
-    init(item: WeatherItem) {
-        self = .weather(weather: VisibleWeather(city: item.name,
-                                                currentWeatherImage: "",
-                                                currentTemperature: "\(item.main.temp)°C",
-                                                currentWeather: "",
-                                                temperatureMax: "Max: \(item.main.tempMax)°C",
-            temperatureMin: "Min: \(item.main.tempMin)°C",
-                                                sunrise: "",
-                                                sunset: "",
-                                                firstForecastTime: "",
-                                                firstForecastImage: "",
-                                                firstForecastTemperature: "",
-                                                secondForecastTime: "",
-                                                secondForecastImageView: "",
-                                                secondForecastTemperature: "",
-                                                thirdForecastTime: "",
-                                                thirdForecastImage: "",
-                                                thirdForecastTemperature: "",
-                                                fourthForecastTime: "",
-                                                fourthForecastImage: "",
-                                                fourthForecastTemperature: ""))
-
+    init(weatherItem: MeteoViewModel.WeatherItem) {
+        switch weatherItem {
+        case .weather(city: let current):
+            self = .weather(weather: VisibleWeather(city: "\(current.city.name), \(current.city.country)",
+                                                    iconCode: current.currentForecast.weather.first?.icon ?? "",
+                                                    currentTemperature: "\(current.currentForecast.main.temp)°C",
+                                                    currentWeather: current.currentForecast.weather[0].weatherDescription,
+                                                    temperatureMax: "Max: \(current.currentForecast.main.tempMax)°C",
+                temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
+                                                    sunrise: "\(current.city.sunrise)",
+                                                    sunset: "\(current.city.sunset)"))
+        case .forecast(forecast: let forecast):
+            self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt,
+                                                       image: forecast.weather.first?.icon ?? "",
+                                                       temperature: "\(forecast.main.temp)"))
+        }
     }
 }
+
+
+
+
+
+
+

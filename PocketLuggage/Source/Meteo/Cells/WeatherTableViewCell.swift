@@ -12,8 +12,6 @@ final class WeatherTableViewCell: UITableViewCell {
     
     @IBOutlet weak var currentCityLabel: UILabel!
     
-    // First StackView
-    
     @IBOutlet weak var currentWeatherImageLabel: UILabel!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var currentWeatherTitleLabel: UILabel!
@@ -24,58 +22,30 @@ final class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     
-    /// Forecasts
-    
     @IBOutlet weak var forecastLabel: UILabel!
     
-    // Time Labels
-    @IBOutlet weak var firstForecastTimeLabel: UILabel!
-    @IBOutlet weak var secondForecastTimeLabel: UILabel!
-    @IBOutlet weak var thirdForecastTimeLabel: UILabel!
-    @IBOutlet weak var fourthForecastTimeLabel: UILabel!
-    
-    //Temperature
-    
-    @IBOutlet weak var firstForecastTemperatureLabel: UILabel!
-    @IBOutlet weak var secondForecastTemperatureLabel: UILabel!
-    @IBOutlet weak var thirdForecastTemperatureLabel: UILabel!
-    @IBOutlet weak var fourthForecastTemperatureLabel: UILabel!
-    
-    // Image
 
-    @IBOutlet weak var firstForecastImageLabel: UILabel!
-    @IBOutlet weak var secondForecastImageLabel: UILabel!
-    @IBOutlet weak var thirdForecastImageLabel: UILabel!
-    @IBOutlet weak var fourthForecastImageLabel: UILabel!
-    
-    
-    
     func configure(with visibleWeather: VisibleWeather) {
         self.currentCityLabel.text = visibleWeather.city
-        self.currentWeatherImageLabel.text = visibleWeather.currentWeatherImage
+        self.currentWeatherImageLabel.text = visibleWeather.iconCode.asWeatherIcon ?? ""
         self.currentTemperatureLabel.text = visibleWeather.currentTemperature
         self.currentWeatherTitleLabel.text = visibleWeather.currentWeather
         self.tempMinLabel.text = visibleWeather.temperatureMin
         self.tempMaxLabel.text = visibleWeather.temperatureMax
         self.sunriseLabel.text = visibleWeather.sunrise
         self.sunsetLabel.text = visibleWeather.sunset
-        self.firstForecastTimeLabel.text = visibleWeather.firstForecastTime
-        self.firstForecastImageLabel.text = visibleWeather.firstForecastImage
-        self.firstForecastTemperatureLabel.text = visibleWeather.firstForecastTemperature
-        self.secondForecastTimeLabel.text = visibleWeather.secondForecastTime
-        self.secondForecastImageLabel.text = visibleWeather.secondForecastImageView
-        self.secondForecastTemperatureLabel.text = visibleWeather.secondForecastTemperature
-        self.thirdForecastTimeLabel.text = visibleWeather.thirdForecastTime
-        self.thirdForecastImageLabel.text = visibleWeather.thirdForecastImage
-        self.thirdForecastTemperatureLabel.text = visibleWeather.thirdForecastTemperature
-        self.fourthForecastTimeLabel.text = visibleWeather.fourthForecastTime
-        self.fourthForecastImageLabel.text = visibleWeather.fourthForecastImage
-        self.fourthForecastTemperatureLabel.text = visibleWeather.fourthForecastTemperature
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        currentCityLabel.text = nil
+        currentWeatherImageLabel.text = nil
+        currentTemperatureLabel.text = nil
+        currentWeatherTitleLabel.text = nil
+        tempMinLabel.text = nil
+        tempMaxLabel.text = nil
+        sunriseLabel.text = nil
+        sunsetLabel.text = nil
         forecastLabel.text = nil
-        // etc...
     }
 }

@@ -10,25 +10,19 @@ import UIKit
 
 struct VisibleWeather {
     let city: String
-    let currentWeatherImage: String
+    let iconCode: String
     let currentTemperature: String
     let currentWeather: String
     let temperatureMax: String
     let temperatureMin: String
     let sunrise: String
     let sunset: String
-    let firstForecastTime: String
-    let firstForecastImage: String
-    let firstForecastTemperature: String
-    let secondForecastTime: String
-    let secondForecastImageView: String
-    let secondForecastTemperature: String
-    let thirdForecastTime: String
-    let thirdForecastImage: String
-    let thirdForecastTemperature: String
-    let fourthForecastTime: String
-    let fourthForecastImage: String
-    let fourthForecastTemperature: String
+}
+
+struct VisibleForecast {
+    let time: String
+    let image: String
+    let temperature: String
 }
 
 class MeteoDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
@@ -58,6 +52,10 @@ class MeteoDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         case .weather(weather: let visibleWeather):
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherTableViewCell", for: indexPath) as! WeatherTableViewCell
             cell.configure(with: visibleWeather)
+            return cell
+        case .forecast(forecast: let visibleForecast):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastTableViewCell", for: indexPath) as! ForecastTableViewCell
+            cell.configure(with: visibleForecast)
             return cell
         }
     }
