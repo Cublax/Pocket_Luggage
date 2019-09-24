@@ -10,9 +10,6 @@ This architecture is split in differents layers/concepts 🏋️‍♀️:
 * `Network`
 * `Tests`
 
-## Intro
-
-Since I've bin hired in my team I learned a lot of new concepts on clean architecture. This project is representing at this time my guideline for every workdays.
 
 ## Architecture
 
