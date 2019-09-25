@@ -38,3 +38,39 @@ extension String {
         }
     }
 }
+
+
+extension String {
+    var weekDayFormat: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        guard let convertedDate = dateFormatter.date(from: self) else { return nil }
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: convertedDate)
+    }
+    
+    var unix: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        guard let convertedDate = dateFormatter.date(from: self) else { return nil }
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: convertedDate)
+    }
+}
+
+extension Double {
+    var hourMinutesFormat: String? {
+        let date = Date(timeIntervalSince1970: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
+    }
+}
+
+
+
+
+
+

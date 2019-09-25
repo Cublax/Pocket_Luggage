@@ -26,7 +26,7 @@ final private class TabBarSource: TabBarSourceType {
     ]
     
     init() {
-        items[0].tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        items[0].tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
         items[1].tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
         items[2].tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
     }

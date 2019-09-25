@@ -60,16 +60,17 @@ final class MeteoViewModel {
             })
         })
     }
-
+   
+    
     private static func initialize(with weather1: Weather, weather2: Weather) -> [WeatherItem] {
         var weatherItems: [WeatherItem] = []
         guard let current1 = weather1.forecasts.first else { return [] }
-        
         weatherItems.append(.weather(city: weather1.city, currentForecast: current1))
-
+        
         let forecasts: [WeatherItem] = weather1.forecasts
-          // .filter { $0.dtTxt == "12.0" }
+            .filter { $0.dtTxt.contains("12:00:00") }
             .map { .forecast(forecast: $0) }
+        
         weatherItems.append(contentsOf: forecasts)
         
         guard let current2 = weather2.forecasts.first else { return [] }
@@ -77,7 +78,7 @@ final class MeteoViewModel {
         weatherItems.append(.weather(city: weather2.city, currentForecast: current2))
         
         let forecasts2: [WeatherItem] = weather2.forecasts
-            // .filter { $0.dtTxt == "12.0" }
+             .filter { $0.dtTxt.contains("12:00:00") }
             .map { .forecast(forecast: $0) }
         weatherItems.append(contentsOf: forecasts2)
         
@@ -94,11 +95,11 @@ extension MeteoViewModel.Item {
                                                     currentTemperature: "\(current.currentForecast.main.temp)°C",
                                                     currentWeather: current.currentForecast.weather[0].weatherDescription,
                                                     temperatureMax: "Max: \(current.currentForecast.main.tempMax)°C",
-                temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
-                                                    sunrise: "\(current.city.sunrise)",
-                                                    sunset: "\(current.city.sunset)"))
+                                                    temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
+                                                    sunrise: Double(current.city.sunrise).hourMinutesFormat ?? "",
+                                                    sunset: Double(current.city.sunset).hourMinutesFormat ?? ""))
         case .forecast(forecast: let forecast):
-            self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt,
+            self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt.weekDayFormat ?? "",
                                                        image: forecast.weather.first?.icon ?? "",
                                                        temperature: "\(forecast.main.temp)"))
         }
