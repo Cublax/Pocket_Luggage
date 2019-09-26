@@ -74,7 +74,7 @@
 		AC59000E22EF422D00FC750C /* ConverterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewModel.swift; sourceTree = "<group>"; };
 		AC59001222EF5F4600FC750C /* ConverterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterRepository.swift; sourceTree = "<group>"; };
 		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
-		AC6273CE233221A100EEC914 /* weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = weather.ttf; path = ../../../../../../Desktop/weather.ttf; sourceTree = "<group>"; };
+		AC6273CE233221A100EEC914 /* weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = weather.ttf; path = "../../Supporting files/weather.ttf"; sourceTree = "<group>"; };
 		AC65626A22B244BF005CE829 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyItem.swift; sourceTree = "<group>"; };
 		AC6A62C322F2F0ED00DDCA9E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };

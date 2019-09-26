@@ -64,7 +64,7 @@ extension Double {
     var hourMinutesFormat: String? {
         let date = Date(timeIntervalSince1970: self)
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "hh:mm a"
         return dateFormatter.string(from: date)
     }
 }

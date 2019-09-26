@@ -32,8 +32,8 @@ final class WeatherTableViewCell: UITableViewCell {
         self.currentWeatherTitleLabel.text = visibleWeather.currentWeather
         self.tempMinLabel.text = visibleWeather.temperatureMin
         self.tempMaxLabel.text = visibleWeather.temperatureMax
-        self.sunriseLabel.text = visibleWeather.sunrise
-        self.sunsetLabel.text = visibleWeather.sunset
+        self.sunriseLabel.text = "☀︎ \(visibleWeather.sunrise)"
+        self.sunsetLabel.text = "☾ \(visibleWeather.sunset)"
     }
 
     override func prepareForReuse() {

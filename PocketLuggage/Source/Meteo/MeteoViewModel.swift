@@ -101,7 +101,7 @@ extension MeteoViewModel.Item {
         case .forecast(forecast: let forecast):
             self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt.weekDayFormat ?? "",
                                                        image: forecast.weather.first?.icon ?? "",
-                                                       temperature: "\(forecast.main.temp)"))
+                                                       temperature: "\(forecast.main.temp)°C"))
         }
     }
 }

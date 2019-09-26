@@ -25,7 +25,7 @@ final class TranslatorCoordinator {
     
     // MARK: - Coordinator
     
-    private var defaultConfiguration = LanguageConfiguration(originLanguage: ("Francais", "fr", ""),
+    private var defaultConfiguration = LanguageConfiguration(originLanguage: ("French", "fr", ""),
                                                              destinationLanguage: ("English", "en", ""))
     
     func start() {

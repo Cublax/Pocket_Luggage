@@ -24,6 +24,7 @@ final class ConverterViewController: UIViewController {
 
     @IBOutlet weak var destinationCurrencyPickerView: UIPickerView!
     
+    
     // MARK: - Properties
     
     var viewModel: ConverterViewModel!
