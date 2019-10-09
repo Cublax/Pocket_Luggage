@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct VisibleWeather {
+struct VisibleWeather: Equatable {
     let city: String
     let iconCode: String
     let currentTemperature: String
@@ -19,7 +19,7 @@ struct VisibleWeather {
     let sunset: String
 }
 
-struct VisibleForecast {
+struct VisibleForecast: Equatable {
     let time: String
     let image: String
     let temperature: String
@@ -29,15 +29,15 @@ class MeteoDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     typealias Item = MeteoViewModel.Item
     
-    var items: [Item] = []
+    // MARK: - Private
+    
+    private var items: [Item] = []
     
     // MARK: - Public
     
     func update(with items: [Item]) {
        self.items = items
     }
-    
-    // MARK: - UITableViewDelegate
     
     // MARK: - UITableViewDataSource
 
@@ -46,7 +46,6 @@ class MeteoDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard indexPath.item < items.count else { fatalError() }
         switch items[indexPath.item] {
         case .weather(weather: let visibleWeather):

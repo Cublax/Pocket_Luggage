@@ -14,7 +14,6 @@ final class MeteoViewController: UIViewController {
 
     @IBOutlet weak var weatherTableView: UITableView!
 
-
     // MARK: Private var
     
     var viewModel: MeteoViewModel!

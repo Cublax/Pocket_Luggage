@@ -25,7 +25,11 @@ class HTTPEngine: HTTPEngineType {
     init(configuration: URLSessionConfiguration = .default) {
         self.session = URLSession(configuration: configuration)
     }
-
+    
+    /// Send the HTTP request
+    /// - Parameter request: The URL Request
+    /// - Parameter token: The tokend needed for handling cancellation
+    /// - Parameter completion: The completion which handle the result
     func send(request: URLRequest, cancelledBy token: RequestCancellationToken, completion: @escaping HTTPCompletionHander) {
         let task = session.dataTask(with: request) { (data, urlResponse, error) in
             if urlResponse != nil, let httpUrlResponse = urlResponse as? HTTPURLResponse {
@@ -35,7 +39,9 @@ class HTTPEngine: HTTPEngineType {
             }
         }
         task.resume()
-        token.willDealocate = { task.cancel() }
+        token.willDealocate = {
+            task.cancel()
+        }
     }
     
     deinit {

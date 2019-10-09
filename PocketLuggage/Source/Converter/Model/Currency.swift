@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Currency: Codable {
+struct CurrencyItem: Codable {
     let date: String
     let rates: [String: Double]
 }
 
-struct Symbols: Codable {
+struct SymbolsItem: Codable {
     let symbols: [String: String]
 }

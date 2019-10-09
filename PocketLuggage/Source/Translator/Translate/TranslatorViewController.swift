@@ -70,10 +70,10 @@ class TranslatorViewController: UIViewController {
         viewModel.didSelectLang(for: .destination)
     }
     
-    
     @IBAction func translateButton(_ sender: UIButton) {
         viewModel.didPressTranslate(for: originTextField.text!)
-}
+    }
+    
     @IBAction func switchButton(_ sender: UIButton) {
        viewModel.didPressSwitch(with: originTextField.text, and: destinationTextField.text)
     }

@@ -14,6 +14,7 @@
 		AC27B100232FA5B1009CBB2D /* WeatherItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC27B0FF232FA5B1009CBB2D /* WeatherItemTest.swift */; };
 		AC27B103232FBD53009CBB2D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = AC27B101232FBD53009CBB2D /* LICENSE */; };
 		AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2E3E5022D73A3B00F4BA30 /* Alert.swift */; };
+		AC329E192342686C008F8BFA /* MeteoViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC329E182342686C008F8BFA /* MeteoViewModelTests.swift */; };
 		AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */; };
 		AC516AD6230301AF00A998E8 /* MeteoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC516AD5230301AF00A998E8 /* MeteoViewModel.swift */; };
 		AC516ADE2303577B00A998E8 /* MeteoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC516ADD2303577B00A998E8 /* MeteoDataSource.swift */; };
@@ -21,7 +22,6 @@
 		AC59001322EF5F4600FC750C /* ConverterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC59001222EF5F4600FC750C /* ConverterRepository.swift */; };
 		AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */; };
 		AC65626B22B244BF005CE829 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC65626A22B244BF005CE829 /* Main.storyboard */; };
-		AC6A62C222F2F0E200DDCA9E /* CurrencyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */; };
 		AC6A62C422F2F0ED00DDCA9E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62C322F2F0ED00DDCA9E /* Currency.swift */; };
 		AC6A62CB22F2FA4800DDCA9E /* HTTPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62CA22F2FA4800DDCA9E /* HTTPEngine.swift */; };
 		AC6A62CD22F2FA5800DDCA9E /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A62CC22F2FA5800DDCA9E /* HTTPClient.swift */; };
@@ -68,6 +68,7 @@
 		AC27B0FF232FA5B1009CBB2D /* WeatherItemTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItemTest.swift; sourceTree = "<group>"; };
 		AC27B101232FBD53009CBB2D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AC2E3E5022D73A3B00F4BA30 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		AC329E182342686C008F8BFA /* MeteoViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeteoViewModelTests.swift; path = PocketLuggageTests/Meteo/MeteoViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		AC48FD3222CE075D0029E545 /* LanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageViewModel.swift; path = ../LanguageViewModel.swift; sourceTree = "<group>"; };
 		AC516AD5230301AF00A998E8 /* MeteoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoViewModel.swift; sourceTree = "<group>"; };
 		AC516ADD2303577B00A998E8 /* MeteoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoDataSource.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		AC5BE47D22CCD3DB0028216A /* LanguageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LanguageDataSource.swift; path = Cells/LanguageDataSource.swift; sourceTree = "<group>"; };
 		AC6273CE233221A100EEC914 /* weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = weather.ttf; path = "../../Supporting files/weather.ttf"; sourceTree = "<group>"; };
 		AC65626A22B244BF005CE829 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyItem.swift; sourceTree = "<group>"; };
 		AC6A62C322F2F0ED00DDCA9E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		AC6A62CA22F2FA4800DDCA9E /* HTTPEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEngine.swift; sourceTree = "<group>"; };
 		AC6A62CC22F2FA5800DDCA9E /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
@@ -150,13 +150,20 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AC6A62C022F2F0D100DDCA9E /* New Group */ = {
+		AC329E1A23426C8C008F8BFA /* Meteo */ = {
 			isa = PBXGroup;
 			children = (
-				AC6A62C122F2F0E200DDCA9E /* CurrencyItem.swift */,
+				AC329E182342686C008F8BFA /* MeteoViewModelTests.swift */,
+			);
+			path = Meteo;
+			sourceTree = "<group>";
+		};
+		AC6A62C022F2F0D100DDCA9E /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				AC6A62C322F2F0ED00DDCA9E /* Currency.swift */,
 			);
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AC6A62C522F2F91300DDCA9E /* Network */ = {
@@ -235,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				AC27B0FF232FA5B1009CBB2D /* WeatherItemTest.swift */,
+				AC329E1A23426C8C008F8BFA /* Meteo */,
 				AC9840B62316A8E3000A9FD8 /* Language */,
 				AC9840B52316A8D2000A9FD8 /* Converter */,
 				ACE5879022C221C10055CAF2 /* Translator */,
@@ -290,7 +298,7 @@
 		ACAADBEE22B23F8700C78423 /* Converter */ = {
 			isa = PBXGroup;
 			children = (
-				AC6A62C022F2F0D100DDCA9E /* New Group */,
+				AC6A62C022F2F0D100DDCA9E /* Model */,
 				ACAADBEC22B23F7F00C78423 /* ConverterviewController.swift */,
 				AC59000E22EF422D00FC750C /* ConverterViewModel.swift */,
 				AC59001222EF5F4600FC750C /* ConverterRepository.swift */,
@@ -511,7 +519,6 @@
 				AC5BE47E22CCD3DB0028216A /* LanguageDataSource.swift in Sources */,
 				AC48FD3322CE075D0029E545 /* LanguageViewModel.swift in Sources */,
 				ACAADBF822B2406200C78423 /* LanguagesViewController.swift in Sources */,
-				AC6A62C222F2F0E200DDCA9E /* CurrencyItem.swift in Sources */,
 				AC2E3E5122D73A3B00F4BA30 /* Alert.swift in Sources */,
 				ACD6BCB4233383340043CBCA /* ForecastTableViewCell.swift in Sources */,
 				AC59000F22EF422D00FC750C /* ConverterViewModel.swift in Sources */,
@@ -545,6 +552,7 @@
 			files = (
 				AC180FD122DDC80100BA1105 /* LanguageViewModelTests.swift in Sources */,
 				AC9840B223167C4E000A9FD8 /* ConverterViewModelTests.swift in Sources */,
+				AC329E192342686C008F8BFA /* MeteoViewModelTests.swift in Sources */,
 				ACE5879122C2231B0055CAF2 /* TranslatorViewModelTests.swift in Sources */,
 				AC27B100232FA5B1009CBB2D /* WeatherItemTest.swift in Sources */,
 			);
@@ -623,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -678,7 +686,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

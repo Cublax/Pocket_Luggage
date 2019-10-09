@@ -8,17 +8,11 @@
 
 import Foundation
 
-protocol MeteoViewModelDelegate: class {
-    
-}
-
 final class MeteoViewModel {
     
     // MARK: - Properties
     
     private let repository: MeteoRepositoryType
-    
-    private weak var delegate: MeteoViewModelDelegate?
     
     var weatherItems: [WeatherItem] = [] {
         didSet {
@@ -29,38 +23,35 @@ final class MeteoViewModel {
     
     // MARK: - Initializer
     
-    init(repository: MeteoRepositoryType, delegate: MeteoViewModelDelegate?) {
+    init(repository: MeteoRepositoryType) {
         self.repository = repository
-        self.delegate = delegate
     }
     
     // MARK: - Outputs
     
     var items: (([Item]) -> Void)?
-
-    enum Item {
+    
+    enum Item: Equatable {
         case weather(weather: VisibleWeather)
         case forecast(forecast: VisibleForecast)
     }
-
+    
     enum WeatherItem {
         case weather(city: City, currentForecast: Forecast)
         case forecast(forecast: Forecast)
     }
-
     
     // MARK: - Inputs
     
     func viewDidLoad() {
-        repository.getForecastMeteo(completion: {[weak self] weather1 in
-            self?.repository.getForecastMeteo(completion: {[weak self] weather2 in
+        repository.getForecastMeteoBerlin(completion: {[weak self] weather1 in
+            self?.repository.getForecastMeteoAnnecy(completion: {[weak self] weather2 in
                 DispatchQueue.main.async {
                     self?.weatherItems = MeteoViewModel.initialize(with: weather1, weather2: weather2)
                 }
             })
         })
     }
-   
     
     private static func initialize(with weather1: Weather, weather2: Weather) -> [WeatherItem] {
         var weatherItems: [WeatherItem] = []
@@ -78,7 +69,7 @@ final class MeteoViewModel {
         weatherItems.append(.weather(city: weather2.city, currentForecast: current2))
         
         let forecasts2: [WeatherItem] = weather2.forecasts
-             .filter { $0.dtTxt.contains("12:00:00") }
+            .filter { $0.dtTxt.contains("12:00:00") }
             .map { .forecast(forecast: $0) }
         weatherItems.append(contentsOf: forecasts2)
         
@@ -91,15 +82,15 @@ extension MeteoViewModel.Item {
         switch weatherItem {
         case .weather(city: let current):
             self = .weather(weather: VisibleWeather(city: "\(current.city.name), \(current.city.country)",
-                                                    iconCode: current.currentForecast.weather.first?.icon ?? "",
-                                                    currentTemperature: "\(current.currentForecast.main.temp)°C",
-                                                    currentWeather: current.currentForecast.weather[0].weatherDescription,
-                                                    temperatureMax: "Max: \(current.currentForecast.main.tempMax)°C",
-                                                    temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
-                                                    sunrise: Double(current.city.sunrise).hourMinutesFormat ?? "",
-                                                    sunset: Double(current.city.sunset).hourMinutesFormat ?? ""))
+                iconCode: current.currentForecast.weather.first?.icon ?? "",
+                currentTemperature: "\(current.currentForecast.main.temp)°C",
+                currentWeather: current.currentForecast.weather.first?.weatherDescription ?? "",
+                temperatureMax: "Max: \(current.currentForecast.main.tempMax)°C",
+                temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
+                sunrise: Double(current.city.sunrise).hourMinutesFormat,
+                sunset: Double(current.city.sunset).hourMinutesFormat ))
         case .forecast(forecast: let forecast):
-            self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt.weekDayFormat ?? "",
+            self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt.weekDayFormat,
                                                        image: forecast.weather.first?.icon ?? "",
                                                        temperature: "\(forecast.main.temp)°C"))
         }

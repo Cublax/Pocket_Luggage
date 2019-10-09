@@ -46,7 +46,6 @@ final class ConverterViewController: UIViewController {
     }
     
     private func bind(to viewModel: ConverterViewModel) {
-        
         viewModel.originCurrencyTitleText = { [weak self] text in
             DispatchQueue.main.async {
                 self?.originUnityCurrencyLabel.text = text

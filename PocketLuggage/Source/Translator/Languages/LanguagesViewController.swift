@@ -19,7 +19,6 @@ final class LanguagesViewController: UIViewController {
     var viewModel: LanguageViewModel!
     
     private let dataSource = LanguageDataSource()
-
     
     // MARK: - View life cycle
     
@@ -39,7 +38,6 @@ final class LanguagesViewController: UIViewController {
     }
     
     private func bind(to VM: LanguageViewModel) {
-        
         viewModel.titleText = { [weak self] text in
             self?.navigationItem.title = text
         }
@@ -50,7 +48,5 @@ final class LanguagesViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
-        
     }
-    
 }

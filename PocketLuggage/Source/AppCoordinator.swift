@@ -21,6 +21,7 @@ final class AppCoordinator {
     init(appDelegate: AppDelegate) {
         self.appDelegate = appDelegate
     }
+    
     // MARK: - Coordinator
     
     func start() {

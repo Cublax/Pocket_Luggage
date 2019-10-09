@@ -21,6 +21,8 @@ final class ConverterRepository: ConverterRepositoryType {
     
     private let token = RequestCancellationToken()
     
+    // MARK: - Initializer
+
     init() {
         self.client = HTTPClient(cancellationToken: token)
     }
@@ -30,8 +32,8 @@ final class ConverterRepository: ConverterRepositoryType {
     func getCurrenciesRate(completion: @escaping (CurrencyItem) -> Void) {
         guard let url = URL(string: "http://data.fixer.io/api/latest?access_key=bc44d0b411a56c92c53f0b0962be3a0f&base=EUR") else { return }
         
-        client.request(type: Currency.self, requestType: .GET, url: url) { (response) in
-            let item: CurrencyItem = CurrencyItem(updatedDate: response.date,
+        client.request(type: CurrencyItem.self, requestType: .GET, url: url) { (response) in
+            let item: CurrencyItem = CurrencyItem(date: response.date,
                                                   rates: response.rates)
             completion(item)
         }
@@ -40,7 +42,7 @@ final class ConverterRepository: ConverterRepositoryType {
     func getCurenciesList(completion: @escaping (SymbolsItem) -> Void) {
         guard let url = URL(string: "http://data.fixer.io/api/symbols?access_key=bc44d0b411a56c92c53f0b0962be3a0f") else { return }
         
-        client.request(type: Symbols.self, requestType: .GET, url: url) { (response) in
+        client.request(type: SymbolsItem.self, requestType: .GET, url: url) { (response) in
             let item: SymbolsItem = SymbolsItem(symbols: response.symbols)
             completion(item)
         }

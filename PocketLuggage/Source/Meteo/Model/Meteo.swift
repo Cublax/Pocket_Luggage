@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: - Forecast
+
 struct Weather: Codable {
     let forecasts: [Forecast]
     let city: City
@@ -20,6 +21,7 @@ struct Weather: Codable {
 }
 
 // MARK: - ForecastCity
+
 struct City: Codable {
     let name: String
     let country: String
@@ -27,6 +29,7 @@ struct City: Codable {
 }
 
 // MARK: - ForecastList
+
 struct Forecast: Codable {
     let dt: Int
     let main: ForecastMainClass
@@ -40,6 +43,7 @@ struct Forecast: Codable {
 }
 
 // MARK: - ForecastMainClass
+
 struct ForecastMainClass: Codable {
     let temp, tempMin, tempMax: Double
     
@@ -50,8 +54,8 @@ struct ForecastMainClass: Codable {
     }
 }
 
-
 // MARK: - ForecastWeather
+
 struct ForecastWeather: Codable {
     let weatherDescription, icon: String
     

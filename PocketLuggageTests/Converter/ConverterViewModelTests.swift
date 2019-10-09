@@ -39,7 +39,7 @@ final class ConverterViewModelTests: XCTestCase {
     func testGivenAConverterViewModelWhenViewDidLoadThenReactVarsAreCorrectlyFilledUp() {
         let mockRepository = MockConverterRepository()
         mockRepository.symbolsResult = SymbolsItem(symbols: ["USD": "Dolars"])
-        mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: ["USD": 123.0])
+        mockRepository.rateResult = CurrencyItem(date: "toto", rates: ["USD": 123.0])
         
         let mockdelegate = MockConverterDelegate()
         let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
@@ -89,15 +89,15 @@ final class ConverterViewModelTests: XCTestCase {
     
     func testGivenAViewModelWhenUseInitializeFuncThenCurrencyTitlesAreCorrectlyReturned() {
         let mockRepository = MockConverterRepository()
-        mockRepository.symbolsResult = SymbolsItem(symbols: ["USD" : "Dolars"])
-        mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: ["USD" : 123])
+        mockRepository.symbolsResult = SymbolsItem(symbols: ["USD" : "Dolars", "AUD" : "Australian Dollar"])
+        mockRepository.rateResult = CurrencyItem(date: "toto", rates: ["USD" : 123, "AUD" : 123])
         let mockdelegate = MockConverterDelegate()
         let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
         
         let expectation = self.expectation(description: "currencyTitles is correctly returned")
         
         viewModel.currencyTitles = { currency in
-            XCTAssertEqual(currency, ["Dolars"])
+            XCTAssertEqual(currency, ["Australian Dollar", "Dolars"])
             expectation.fulfill()
         }
         
@@ -110,7 +110,7 @@ final class ConverterViewModelTests: XCTestCase {
     func testGivenAConverterViewModelWhenViewDidLoadThenReturnDefaultValue() {
         let mockRepository = MockConverterRepository()
         mockRepository.symbolsResult = SymbolsItem(symbols: [:])
-        mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: [:])
+        mockRepository.rateResult = CurrencyItem(date: "toto", rates: [:])
         let mockdelegate = MockConverterDelegate()
         let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
         
@@ -134,7 +134,7 @@ final class ConverterViewModelTests: XCTestCase {
     func testGivenAConverterViewModelWhenDidPressConvertThenReturnTheConvertion() {
         let mockRepository = MockConverterRepository()
         mockRepository.symbolsResult = SymbolsItem(symbols: ["USD" : "Dolars"])
-        mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: ["USD" : 2])
+        mockRepository.rateResult = CurrencyItem(date: "toto", rates: ["USD" : 2])
         let mockdelegate = MockConverterDelegate()
         let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
         
@@ -143,7 +143,7 @@ final class ConverterViewModelTests: XCTestCase {
         var counter = 0
         viewModel.destinationText = { convertion in
             if counter == 1 {
-                XCTAssertEqual(convertion, "20.00")
+                XCTAssertEqual(convertion, "20.0")
                 expectation.fulfill()
             }
            counter += 1
@@ -157,7 +157,7 @@ final class ConverterViewModelTests: XCTestCase {
     func testGivenAConverterViewModelWhenDidPressConvertWithAbsurdThenReturn() {
     let mockRepository = MockConverterRepository()
     mockRepository.symbolsResult = SymbolsItem(symbols: ["USD" : "Dolars"])
-    mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: ["USD" : 2])
+    mockRepository.rateResult = CurrencyItem(date: "toto", rates: ["USD" : 2])
     let mockdelegate = MockConverterDelegate()
     let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
     
@@ -177,7 +177,7 @@ final class ConverterViewModelTests: XCTestCase {
     func testGivenAConverterViewModelWhenDidSelectCurrencyThen() {
         let mockRepository = MockConverterRepository()
         mockRepository.symbolsResult = SymbolsItem(symbols: ["USD" : "Dolars"])
-        mockRepository.rateResult = CurrencyItem(updatedDate: "toto", rates: ["USD" : 2])
+        mockRepository.rateResult = CurrencyItem(date: "toto", rates: ["USD" : 2])
         let mockdelegate = MockConverterDelegate()
         let viewModel = ConverterViewModel(repository: mockRepository, delegate: mockdelegate)
         
@@ -195,7 +195,7 @@ final class ConverterViewModelTests: XCTestCase {
         
         viewModel.destinationText = { convertion in
             if counter == 2 {
-                XCTAssertEqual(convertion, "20.00")
+                XCTAssertEqual(convertion, "20.0")
                 expectation1.fulfill()
             }
         }

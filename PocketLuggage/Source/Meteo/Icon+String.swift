@@ -41,11 +41,11 @@ extension String {
 
 
 extension String {
-    var weekDayFormat: String? {
+    var weekDayFormat: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
-        guard let convertedDate = dateFormatter.date(from: self) else { return nil }
+        guard let convertedDate = dateFormatter.date(from: self) else { return "" }
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: convertedDate)
     }
@@ -61,7 +61,7 @@ extension String {
 }
 
 extension Double {
-    var hourMinutesFormat: String? {
+    var hourMinutesFormat: String {
         let date = Date(timeIntervalSince1970: self)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"

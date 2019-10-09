@@ -12,6 +12,8 @@ class LanguageDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     typealias Item  = LanguageViewModel.Item
     
+    // MARK: - Private
+
     private enum VisibleItem {
         case item(language: String)
     }

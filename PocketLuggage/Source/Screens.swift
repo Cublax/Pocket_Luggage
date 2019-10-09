@@ -31,7 +31,9 @@ extension Screens {
     func createLanguagesViewController(languageType: LanguageViewType, delegate: LanguageViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "LanguagesViewController") as! LanguagesViewController
         let repository = LanguageRepository()
-        let viewModel = LanguageViewModel(languageType: languageType, repository: repository, delegate: delegate)
+        let viewModel = LanguageViewModel(languageType: languageType,
+                                          repository: repository,
+                                          delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -40,10 +42,10 @@ extension Screens {
 // MARK: - Meteo
 
 extension Screens {
-    func createMeteoViewController(delegate: MeteoViewModelDelegate?) -> UIViewController {
+    func createMeteoViewController() -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! MeteoViewController
         let repository = MeteoRepository()
-        let viewModel = MeteoViewModel(repository: repository, delegate: delegate)
+        let viewModel = MeteoViewModel(repository: repository)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -51,12 +53,12 @@ extension Screens {
 
 // MARK: - Converter
 
-
 extension Screens {
     func createConverterViewController(delegate: ConverterViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
         let repository = ConverterRepository()
-        let viewModel = ConverterViewModel(repository: repository, delegate: delegate)
+        let viewModel = ConverterViewModel(repository: repository,
+                                           delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -67,8 +69,12 @@ extension Screens {
 extension Screens {
     func createAlert(for type: AlertType) -> UIAlertController {
         let alert = Alert(type: type)
-        let alertController = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let alertController = UIAlertController(title: alert.title,
+                                                message: alert.message,
+                                                preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok",
+                                   style: .cancel,
+                                   handler: nil)
         alertController.addAction(action)
         return alertController
     }

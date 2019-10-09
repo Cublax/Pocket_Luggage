@@ -31,7 +31,7 @@
 		09DBED9BA64432726F3C1966576788FA /* SwiftGoogleTranslate-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGoogleTranslate-prefix.pch"; sourceTree = "<group>"; };
 		2CB2924AD9C9F7007A8F1775A2231F9E /* SwiftGoogleTranslate-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGoogleTranslate-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		40EE5F8D6C96E4AE700B4E07449EDBF8 /* SwiftGoogleTranslate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftGoogleTranslate.framework; path = SwiftGoogleTranslate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40EE5F8D6C96E4AE700B4E07449EDBF8 /* SwiftGoogleTranslate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGoogleTranslate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		555C6E55D60D9123DD835D7781B27281 /* Pods-PocketLuggage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PocketLuggage.modulemap"; sourceTree = "<group>"; };
 		5D7A53E099B913FB2E5BE439BEFD6CE8 /* SwiftGoogleTranslate-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftGoogleTranslate-Info.plist"; sourceTree = "<group>"; };
 		5E273E54A7D87B4774FDA02E9637DAFE /* Pods-PocketLuggage-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PocketLuggage-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -41,9 +41,9 @@
 		845CC011A570D2FA755A2186601E2AF7 /* Pods-PocketLuggage-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PocketLuggage-acknowledgements.plist"; sourceTree = "<group>"; };
 		87836D18031C581A68B5ACBA4825F1FB /* Pods-PocketLuggage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketLuggage.release.xcconfig"; sourceTree = "<group>"; };
 		9BCDF7F3965E1C5880244397AB23D082 /* Pods-PocketLuggage-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PocketLuggage-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A35CF605CD9B0AD3695ABCDC896EBB5A /* Pods-PocketLuggage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PocketLuggage.debug.xcconfig"; sourceTree = "<group>"; };
-		AFB2F3D3B59C4B1D5DB78E7FFBB246AD /* Pods_PocketLuggage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PocketLuggage.framework; path = "Pods-PocketLuggage.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB2F3D3B59C4B1D5DB78E7FFBB246AD /* Pods_PocketLuggage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PocketLuggage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD04329DD6038A47C72FE8991F556D6 /* Pods-PocketLuggage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PocketLuggage-umbrella.h"; sourceTree = "<group>"; };
 		F8A15AC22E5BDF956542DF3BDC1549DA /* SwiftGoogleTranslate.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftGoogleTranslate.modulemap; sourceTree = "<group>"; };
 		FFF9C786495D1FDEEB61300FDE408F78 /* SwiftGoogleTranslate-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftGoogleTranslate-dummy.m"; sourceTree = "<group>"; };
@@ -109,7 +109,6 @@
 				71BAD08079EAD6325D56D5E998F62548 /* SwiftGoogleTranslate.swift */,
 				FA241FF26BED165740F0EBB3A3024244 /* Support Files */,
 			);
-			name = SwiftGoogleTranslate;
 			path = SwiftGoogleTranslate;
 			sourceTree = "<group>";
 		};
@@ -236,6 +235,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 716E9EF12B43E0FC6905E56ACFD3521B /* Products */;

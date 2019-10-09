@@ -66,9 +66,7 @@ final class ConverterViewModel {
     var convertButtonTitleText: ((String) -> Void)?
     
     var currencyTitles: (([String]) -> Void)?
-    
-    // MARK: - Inputs
-    
+        
     func viewDidLoad() {
         originCurrencyTitleText?("1 EUR")
         originText?("")
@@ -87,8 +85,11 @@ final class ConverterViewModel {
         }
     }
     
+    // MARK: - Inputs
+    
     func initialize(with symbols: [String: String], and rates: [String: Double]) -> [CurrencyStructure] {
-        let currencies: [CurrencyStructure] = symbols.map { return CurrencyStructure(title: $0.value, shortTitle: $0.key, value: 0.0) }
+        let ordinate = symbols.sorted { $0.value < $1.value }
+        let currencies: [CurrencyStructure] = ordinate.map { return CurrencyStructure(title: $0.value, shortTitle: $0.key, value: 0.0) }
         rates.forEach { key, value in
             currencies.forEach {
                 if $0.shortTitle == key {
@@ -117,6 +118,6 @@ final class ConverterViewModel {
     private func convert(value: Double) {
         guard let selectedCurrencyValue = localSelectedCurrency?.value else { return }
         let result = value * selectedCurrencyValue
-        destinationText?(String(format: "%.2f", result))
+        destinationText?(String(result))
     }
 }

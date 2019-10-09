@@ -30,7 +30,7 @@ final class ConverterCoordinator {
     }
     
     private func showConverter() {
-        let viewController = screens.createConverterViewController( delegate: self)
+        let viewController = screens.createConverterViewController(delegate: self)
         presenter.viewControllers = [viewController]
     }
     

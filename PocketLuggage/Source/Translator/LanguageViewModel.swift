@@ -22,7 +22,7 @@ final class LanguageViewModel {
     // MARK: Private properties
     
     private weak var delegate: LanguageViewModelDelegate?
-
+    
     private var languageItems: [LanguageItem] = [] {
         didSet {
             let items = languageItems.map { Item(languageItem: $0) }
@@ -69,7 +69,7 @@ final class LanguageViewModel {
     
     // MARK: - Inputs
     
-      func viewDidLoad() {
+    func viewDidLoad() {
         titleText?("Languages")
         repository.requestLanguages { [weak self] (languages) in
             self?.languageItems = LanguageViewModel.initialItems(from: languages)
@@ -88,7 +88,7 @@ final class LanguageViewModel {
             case .destination:
                 delegate?.languageScreenDidSelectDetail(with: .destination(languageStruct.name, languageStruct.atribute))
             }
-    }
+        }
     }
 }
 

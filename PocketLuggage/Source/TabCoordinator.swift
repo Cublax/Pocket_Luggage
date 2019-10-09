@@ -26,9 +26,19 @@ final private class TabBarSource: TabBarSourceType {
     ]
     
     init() {
-        items[0].tabBarItem = UITabBarItem(tabBarSystemItem: .mostRecent, tag: 0)
-        items[1].tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        items[2].tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        tabBarIconInitializer()
+    }
+    
+    private func tabBarIconInitializer() {
+        let translatorIcon = UIImage(systemName: "bubble.left.and.bubble.right")
+        let filledTranslatorIcon = UIImage(systemName: "bubble.left.and.bubble.right.fill")
+        self[.translator].tabBarItem = UITabBarItem(title: "Translator", image: translatorIcon, selectedImage: filledTranslatorIcon)
+        let meteoIcon = UIImage(systemName: "sun.min")
+        let filledMeteoIcon = UIImage(systemName: "sun.min.fill")
+        self[.meteo].tabBarItem = UITabBarItem(title: "Meteo", image: meteoIcon, selectedImage: filledMeteoIcon)
+        let converterIcon = UIImage(systemName: "dollarsign.circle")
+        let filledConverterIcon = UIImage(systemName: "dollarsign.circle.fill")
+        self[.converter].tabBarItem = UITabBarItem(title: "Converter", image: converterIcon, selectedImage: filledConverterIcon)
     }
 }
 
@@ -61,8 +71,8 @@ final class TabCoordinator: NSObject {
     
     private var source: TabBarSource = TabBarSource()
     
-    // MARK: - Initializer
-    
+    // MARK: - Init
+
     init(presenter: UIWindow) {
         self.presenter = presenter
         
@@ -74,6 +84,8 @@ final class TabCoordinator: NSObject {
         
         tabBarController.delegate = self
     }
+
+    // MARK: - Start
     
     func start() {
         presenter.rootViewController = tabBarController
@@ -94,7 +106,6 @@ final class TabCoordinator: NSObject {
         converterCoordinator = ConverterCoordinator(presenter: source[.converter], screens: screens)
         converterCoordinator?.start()
     }
-    
 }
 
 extension TabCoordinator: UITabBarControllerDelegate {

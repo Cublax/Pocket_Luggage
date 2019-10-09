@@ -10,11 +10,11 @@ import Foundation
 
 final class RequestCancellationToken {
     
-    init () {}
+    init() {}
     
     deinit {
         willDealocate?()
     }
     
-    var willDealocate:(() -> Void)?
+    var willDealocate: (() -> Void)?
 }
