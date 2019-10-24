@@ -64,4 +64,3 @@ struct ForecastWeather: Codable {
         case icon
     }
 }
-

@@ -41,7 +41,7 @@ final class ConverterDataSource: NSObject, UIPickerViewDataSource, UIPickerViewD
         guard row < visibleItems.count else { return }
         didSelectCurrencyAtIndex?(row)
     }
-    
+
     // MARK: - Public
     
     var didSelectCurrencyAtIndex: ((Int) -> Void)?

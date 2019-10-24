@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ConverterViewController: UIViewController {
+final class ConverterViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -27,6 +27,7 @@ final class ConverterViewController: UIViewController {
     
     // MARK: - Properties
     
+    
     var viewModel: ConverterViewModel!
     
     private lazy var dataSource = ConverterDataSource()
@@ -35,9 +36,10 @@ final class ConverterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         destinationCurrencyPickerView.dataSource = dataSource
         destinationCurrencyPickerView.delegate = dataSource
+        originCurrencyTextField.delegate = self
         
         bind(to: dataSource)
         bind(to: viewModel)
@@ -99,5 +101,16 @@ final class ConverterViewController: UIViewController {
     @IBAction func convert(_ sender: UIButton) {
         guard let value = originCurrencyTextField.text else {return}
         viewModel.didPressConvert(value: value)
+    }
+    
+    // MARK: - Delegate
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        originCurrencyTextField.resignFirstResponder()
+        return true
     }
 }

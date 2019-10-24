@@ -12,7 +12,3 @@ struct CurrencyItem: Codable {
     let date: String
     let rates: [String: Double]
 }
-
-struct SymbolsItem: Codable {
-    let symbols: [String: String]
-}

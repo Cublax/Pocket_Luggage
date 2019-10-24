@@ -13,6 +13,13 @@ final class Screens {
     
     let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: Screens.self))
     
+    private let context: Context
+
+    // MARK: - Initializer
+
+    init(context: Context) {
+        self.context = context
+    }
 }
 
 // MARK: - Translator
@@ -42,10 +49,11 @@ extension Screens {
 // MARK: - Meteo
 
 extension Screens {
-    func createMeteoViewController() -> UIViewController {
+    func createMeteoViewController(delegate: MeteoViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! MeteoViewController
-        let repository = MeteoRepository()
-        let viewModel = MeteoViewModel(repository: repository)
+        let repository = MeteoRepository(networkClient: context.networkClient, requestBuilder: context.requestBuilder)
+        let viewModel = MeteoViewModel(repository: repository,
+                                       delegate: delegate)
         viewController.viewModel = viewModel
         return viewController
     }
@@ -56,7 +64,7 @@ extension Screens {
 extension Screens {
     func createConverterViewController(delegate: ConverterViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
-        let repository = ConverterRepository()
+        let repository = ConverterRepository(networkClient: context.networkClient, requestBuilder: context.requestBuilder)
         let viewModel = ConverterViewModel(repository: repository,
                                            delegate: delegate)
         viewController.viewModel = viewModel

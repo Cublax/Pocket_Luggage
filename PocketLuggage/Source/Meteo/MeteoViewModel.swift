@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol MeteoViewModelDelegate: class {
+    func shouldDisplayAlert(for type: AlertType)
+}
+
 final class MeteoViewModel {
     
     // MARK: - Properties
     
     private let repository: MeteoRepositoryType
+    
+    private weak var delegate: MeteoViewModelDelegate?
     
     var weatherItems: [WeatherItem] = [] {
         didSet {
@@ -23,8 +29,9 @@ final class MeteoViewModel {
     
     // MARK: - Initializer
     
-    init(repository: MeteoRepositoryType) {
+    init(repository: MeteoRepositoryType, delegate: MeteoViewModelDelegate?) {
         self.repository = repository
+        self.delegate = delegate
     }
     
     // MARK: - Outputs
@@ -44,13 +51,17 @@ final class MeteoViewModel {
     // MARK: - Inputs
     
     func viewDidLoad() {
-        repository.getForecastMeteoBerlin(completion: {[weak self] weather1 in
-            self?.repository.getForecastMeteoAnnecy(completion: {[weak self] weather2 in
+        repository.getForecastMeteoBerlin(success: { (weather1) in
+            self.repository.getForecastMeteoAnnecy(success: { (weather2) in
                 DispatchQueue.main.async {
-                    self?.weatherItems = MeteoViewModel.initialize(with: weather1, weather2: weather2)
+                    self.weatherItems = MeteoViewModel.initialize(with: weather1, weather2: weather2)
                 }
+            }, failure: { [weak self] in
+                    self?.delegate?.shouldDisplayAlert(for: .requestError)
+                })
+            }, failure: { [weak self] in
+                  self?.delegate?.shouldDisplayAlert(for: .requestError)
             })
-        })
     }
     
     private static func initialize(with weather1: Weather, weather2: Weather) -> [WeatherItem] {

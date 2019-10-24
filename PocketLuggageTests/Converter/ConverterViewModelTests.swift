@@ -12,16 +12,16 @@ import XCTest
 
 fileprivate final class MockConverterRepository: ConverterRepositoryType {
     
-    var rateResult: CurrencyItem!
+     var rateResult: CurrencyItem!
     
-    func getCurrenciesRate(completion: @escaping (CurrencyItem) -> Void) {
-        completion(rateResult)
+    func getCurrenciesRate(success: @escaping (CurrencyItem) -> Void, failure: @escaping (() -> Void)) {
+        success(rateResult)
     }
     
     var symbolsResult: SymbolsItem!
-    
-    func getCurenciesList(completion: @escaping (SymbolsItem) -> Void) {
-        completion(symbolsResult)
+       
+    func getCurenciesList(success: @escaping (SymbolsItem) -> Void, failure: @escaping (() -> Void)) {
+        success(symbolsResult)
     }
 }
 

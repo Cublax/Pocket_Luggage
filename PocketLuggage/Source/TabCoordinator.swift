@@ -73,10 +73,10 @@ final class TabCoordinator: NSObject {
     
     // MARK: - Init
 
-    init(presenter: UIWindow) {
+    init(presenter: UIWindow, context: Context) {
         self.presenter = presenter
+        self.screens = Screens(context: context)
         
-        screens = Screens()
         tabBarController = UITabBarController(nibName: nil, bundle: nil)
         tabBarController.viewControllers = source.items
         tabBarController.selectedViewController = source[.translator]

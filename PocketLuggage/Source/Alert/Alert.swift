@@ -10,6 +10,7 @@ import Foundation
 
 enum AlertType: Equatable {
     case translationError
+    case requestError
 }
 
 struct Alert: Equatable {
@@ -22,6 +23,8 @@ extension Alert {
         switch type {
         case .translationError:
             self = Alert(title: "Alert", message: "An error has occured")
+        case .requestError:
+            self = Alert(title: "Alert", message: "RequestError")
         }
     }
 }

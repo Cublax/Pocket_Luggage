@@ -14,12 +14,15 @@ final class AppCoordinator {
     
     private unowned var appDelegate: AppDelegate
     
+     private let context: Context
+    
     private var tabCoordinator: TabCoordinator?
     
     // MARK: - Initializer
     
-    init(appDelegate: AppDelegate) {
+    init(appDelegate: AppDelegate, context: Context) {
         self.appDelegate = appDelegate
+        self.context = context
     }
     
     // MARK: - Coordinator
@@ -29,7 +32,7 @@ final class AppCoordinator {
         appDelegate.window!.rootViewController = UIViewController()
         appDelegate.window!.makeKeyAndVisible()
         
-        tabCoordinator = TabCoordinator(presenter: appDelegate.window!)
+        tabCoordinator = TabCoordinator(presenter: appDelegate.window!, context: context)
         tabCoordinator?.start()
     }
 }

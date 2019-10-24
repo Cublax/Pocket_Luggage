@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TranslatorViewController: UIViewController {
+class TranslatorViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -28,6 +28,8 @@ class TranslatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        originTextField.delegate = self
         
         bind(to: viewModel)
         
@@ -71,10 +73,22 @@ class TranslatorViewController: UIViewController {
     }
     
     @IBAction func translateButton(_ sender: UIButton) {
+        // deballer 
         viewModel.didPressTranslate(for: originTextField.text!)
     }
     
     @IBAction func switchButton(_ sender: UIButton) {
        viewModel.didPressSwitch(with: originTextField.text, and: destinationTextField.text)
     }
+    
+    // MARK: - Delegate
+    
+       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+              self.view.endEditing(true)
+          }
+       
+       func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           originTextField.resignFirstResponder()
+           return true
+       }
 }

@@ -76,13 +76,17 @@ final class ConverterViewModel {
         destinationText?("")
         destinationPlaceHolderText?("0")
         
-        repository.getCurenciesList { (symbolsItem) in
-            self.repository.getCurrenciesRate { (rateItem) in
+        repository.getCurenciesList(success: { (symbolsItem) in
+            self.repository.getCurrenciesRate(success: { (rateItem) in
                 self.currencies = self.initialize(with: symbolsItem.symbols, and: rateItem.rates)
                 self.localSelectedCurrency = self.currencies.first
                 self.destinationCurrencyTitleText?("\(self.currencies.first?.value ?? 0.0) \(self.currencies.first?.shortTitle ?? "N/A")")
-            }
-        }
+            }, failure: { [weak self] in
+                self?.delegate?.shouldDisplayAlert(for: .requestError)
+            })
+        }, failure: { [weak self] in
+              self?.delegate?.shouldDisplayAlert(for: .requestError)
+        })
     }
     
     // MARK: - Inputs
