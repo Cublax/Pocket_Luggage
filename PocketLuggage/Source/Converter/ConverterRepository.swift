@@ -16,8 +16,6 @@ protocol ConverterRepositoryType: class {
 final class ConverterRepository: ConverterRepositoryType {
     
     private let networkClient: HTTPClient
-    
-    private let requestBuilder: PocketLuggageRequestBuilder
 
     private let urlRequestBuilder = URLRequestBuilder()
 
@@ -25,20 +23,16 @@ final class ConverterRepository: ConverterRepositoryType {
 
     // MARK: - Init
 
-    init(networkClient: HTTPClient, requestBuilder: PocketLuggageRequestBuilder) {
+    init(networkClient: HTTPClient) {
         self.networkClient = networkClient
-         self.requestBuilder = requestBuilder
     }
     // MARK: - Requests
     
      func getCurrenciesRate(success: @escaping (CurrencyItem) -> Void, failure: @escaping (() -> Void)) {
         
-       let currencyEndpoint = CurrencyEndpoint()
+        guard let url = URL(string: "http://data.fixer.io/api/latest?access_key=bc44d0b411a56c92c53f0b0962be3a0f&base=EUR") else { return }
         
-        guard
-        let httpRequest = self.requestBuilder.buildRequest(for: currencyEndpoint),
-        let urlRequest = try? self.urlRequestBuilder.buildURLRequest(from: httpRequest)
-                   else { failure() ; return }
+         let urlRequest = URLRequest(url: url)
 
                networkClient
                    .executeTask(urlRequest, cancelledBy: cancellationToken)
@@ -55,19 +49,16 @@ final class ConverterRepository: ConverterRepositoryType {
     
    func getCurenciesList(success: @escaping (SymbolsItem) -> Void, failure: @escaping (() -> Void)) {
      
-    let currencyEndpoint = SymbolsEndpoint()
-     
-     guard
-     let httpRequest = self.requestBuilder.buildRequest(for: currencyEndpoint),
-     let urlRequest = try? self.urlRequestBuilder.buildURLRequest(from: httpRequest)
-                else { failure() ; return }
-
+        guard let url = URL(string: "http://data.fixer.io/api/symbols?access_key=bc44d0b411a56c92c53f0b0962be3a0f") else { return }
+           
+        let urlRequest = URLRequest(url: url)
+    
             networkClient
                 .executeTask(urlRequest, cancelledBy: cancellationToken)
                 .processCodableResponse { (response: HTTPResponse<SymbolsItem>) in
                     switch response.result {
                     case .success(let symbolsResponse):
-                     success(symbolsResponse)
+                        success(symbolsResponse)
                     case .failure(_):
                         failure()
                     }

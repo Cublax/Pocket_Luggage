@@ -51,7 +51,7 @@ extension Screens {
 extension Screens {
     func createMeteoViewController(delegate: MeteoViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "MeteoViewController") as! MeteoViewController
-        let repository = MeteoRepository(networkClient: context.networkClient, requestBuilder: context.requestBuilder)
+        let repository = MeteoRepository(networkClient: context.networkClient)
         let viewModel = MeteoViewModel(repository: repository,
                                        delegate: delegate)
         viewController.viewModel = viewModel
@@ -64,7 +64,7 @@ extension Screens {
 extension Screens {
     func createConverterViewController(delegate: ConverterViewModelDelegate?) -> UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ConverterViewController") as! ConverterViewController
-        let repository = ConverterRepository(networkClient: context.networkClient, requestBuilder: context.requestBuilder)
+        let repository = ConverterRepository(networkClient: context.networkClient)
         let viewModel = ConverterViewModel(repository: repository,
                                            delegate: delegate)
         viewController.viewModel = viewModel

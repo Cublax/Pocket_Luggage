@@ -13,7 +13,7 @@ final class PocketLuggageRequestBuilderTest: XCTestCase {
 
     func testThatBuildRequestCorrectly() {
         let url = URL(string: "http://data.fixer.io/api/")!
-        let builder = PocketLuggageRequestBuilder(url: url)
+        let builder = ConverterRequestBuilder(url: url)
 
         let result = builder.buildRequest(for: MockEndPoint())
 

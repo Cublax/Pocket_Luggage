@@ -35,7 +35,7 @@ final private class TabBarSource: TabBarSourceType {
         self[.translator].tabBarItem = UITabBarItem(title: "Translator", image: translatorIcon, selectedImage: filledTranslatorIcon)
         let meteoIcon = UIImage(systemName: "sun.min")
         let filledMeteoIcon = UIImage(systemName: "sun.min.fill")
-        self[.meteo].tabBarItem = UITabBarItem(title: "Meteo", image: meteoIcon, selectedImage: filledMeteoIcon)
+        self[.meteo].tabBarItem = UITabBarItem(title: "Weather", image: meteoIcon, selectedImage: filledMeteoIcon)
         let converterIcon = UIImage(systemName: "dollarsign.circle")
         let filledConverterIcon = UIImage(systemName: "dollarsign.circle.fill")
         self[.converter].tabBarItem = UITabBarItem(title: "Converter", image: converterIcon, selectedImage: filledConverterIcon)

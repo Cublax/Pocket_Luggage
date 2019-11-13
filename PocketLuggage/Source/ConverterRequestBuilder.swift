@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class PocketLuggageRequestBuilder {
+final class ConverterRequestBuilder {
 
     // MARK: - Private properties
 

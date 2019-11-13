@@ -17,18 +17,16 @@ final class MeteoRepository: MeteoRepositoryType {
 
    private let networkClient: HTTPClient
    
-   private let requestBuilder: PocketLuggageRequestBuilder
-
    private let urlRequestBuilder = URLRequestBuilder()
 
    private let cancellationToken = RequestCancellationToken()
 
    // MARK: - Init
 
-   init(networkClient: HTTPClient, requestBuilder: PocketLuggageRequestBuilder) {
+   init(networkClient: HTTPClient) {
        self.networkClient = networkClient
-        self.requestBuilder = requestBuilder
    }
+    
    // MARK: - Requests
    
     func getForecastMeteoBerlin(success: @escaping (Weather) -> Void, failure: @escaping (() -> Void)) {
@@ -51,7 +49,7 @@ final class MeteoRepository: MeteoRepositoryType {
     
     func getForecastMeteoAnnecy(success: @escaping (Weather) -> Void, failure: @escaping (() -> Void)) {
        
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/forecast?q=Berlin,de&units=metric&APPID=8ef2b02e2cabd2d7092208a0fb5a7688") else { return }
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/forecast?q=Annecy,fr&units=metric&APPID=8ef2b02e2cabd2d7092208a0fb5a7688") else { return }
         
          let urlRequest = URLRequest(url: url)
 

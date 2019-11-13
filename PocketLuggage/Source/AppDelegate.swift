@@ -15,15 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var context: Context!
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
         let client = HTTPClient(engine: .urlSession(.default))
-
-         let requestBuilder = PocketLuggageRequestBuilder()
         
-        context = Context(networkClient: client, requestBuilder: requestBuilder)
+        context = Context(networkClient: client)
         
         coordinator = AppCoordinator(appDelegate: self, context: context)
         coordinator.start()

@@ -14,12 +14,9 @@ final class Context {
 
     let networkClient: HTTPClient
 
-    let requestBuilder: PocketLuggageRequestBuilder
-
     // MARK: - Initializer
 
-    init(networkClient: HTTPClient, requestBuilder: PocketLuggageRequestBuilder) {
+    init(networkClient: HTTPClient) {
         self.networkClient = networkClient
-        self.requestBuilder = requestBuilder
     }
 }

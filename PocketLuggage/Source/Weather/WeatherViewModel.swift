@@ -94,23 +94,16 @@ extension MeteoViewModel.Item {
         case .weather(city: let current):
             self = .weather(weather: VisibleWeather(city: "\(current.city.name), \(current.city.country)",
                 iconCode: current.currentForecast.weather.first?.icon ?? "",
-                currentTemperature: "\(current.currentForecast.main.temp)°C",
+                currentTemperature: "\(round(current.currentForecast.main.temp))°C",
                 currentWeather: current.currentForecast.weather.first?.weatherDescription ?? "",
-                temperatureMax: "Max: \(current.currentForecast.main.tempMax)°C",
-                temperatureMin: "Min: \(current.currentForecast.main.tempMin)°C",
+                temperatureMax: "Max: \(round(current.currentForecast.main.tempMax))°C",
+                temperatureMin: "Min: \(round(current.currentForecast.main.tempMin))°C",
                 sunrise: Double(current.city.sunrise).hourMinutesFormat,
                 sunset: Double(current.city.sunset).hourMinutesFormat ))
         case .forecast(forecast: let forecast):
             self = .forecast(forecast: VisibleForecast(time: forecast.dtTxt.weekDayFormat,
                                                        image: forecast.weather.first?.icon ?? "",
-                                                       temperature: "\(forecast.main.temp)°C"))
+                                                       temperature: "\(round(forecast.main.temp))°C"))
         }
     }
 }
-
-
-
-
-
-
-

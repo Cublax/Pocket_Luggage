@@ -25,6 +25,8 @@ final class MeteoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Weather"
+        
         weatherTableView.dataSource = datasource
         weatherTableView.delegate = datasource
         

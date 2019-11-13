@@ -36,7 +36,9 @@ final class ConverterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        title = "Converter"
+        
         destinationCurrencyPickerView.dataSource = dataSource
         destinationCurrencyPickerView.delegate = dataSource
         originCurrencyTextField.delegate = self
@@ -93,7 +95,7 @@ final class ConverterViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func bind(to datasource: ConverterDataSource) {
-       dataSource.didSelectCurrencyAtIndex = viewModel.didSelectCurrency
+        dataSource.didSelectCurrencyAtIndex = viewModel.didSelectCurrency
     }
     
     // MARK: - Actions
