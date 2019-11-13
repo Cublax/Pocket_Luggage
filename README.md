@@ -5,7 +5,7 @@ Pocket Luggage is a 3 tab travel App.
 It includes everything you need when you are traveling, a currency converter, a weather App but also a translator with all the languages you could dream of.
 #### Give it a try 🤠
 
-## Translator
+## Translator:
 
 The first view is the translator himself. The textfield from above is where you should write the text you want to translate, in the langage named above.
 The `Translate` button had to be pressed when you want to get the translation.
